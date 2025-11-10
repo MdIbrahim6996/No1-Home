@@ -25,7 +25,7 @@ const AdditionalExtra = () => {
             img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?fm=jpg&q=80&w=800", // rooftop panels
         },
     ];
-
+    console.log(extras);
     return (
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
             {/* Section Header */}

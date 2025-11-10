@@ -18,8 +18,8 @@ const Home = () => {
             <Testimonial />
             <Hero />
             <About />
-            {/* <SolarWorks /> */}
-            {/* <Pricing /> */}
+            <SolarWorks />
+            <Pricing />
             <Benefits />
             <TrustedBrands />
             <InstallationProcess />
