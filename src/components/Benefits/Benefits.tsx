@@ -1,41 +1,35 @@
+import { MdOutlineEnergySavingsLeaf } from "react-icons/md";
+import { FaMoneyBillTrendUp, FaMoneyBillWheat } from "react-icons/fa6";
+import { PiPlant } from "react-icons/pi";
+
+import type { IconType } from "react-icons";
+
 const BenefitCard = ({
     index,
     title,
-    img,
+    icon: Icon,
     desc,
 }: {
     index: number;
     title: string;
-    img: string;
+    icon: IconType;
     desc: string;
 }) => {
     return (
         <div
             key={index}
-            className="relative rounded-xl overflow-hidden text-left h-[280px] md:h-[250px] group"
+            className="rounded-lg overflow-hidden flex flex-col justify-between h-[280px] md:h-[250px] group
+             bg-brand-light-lime/90"
         >
-            {/* Background Image */}
-            <img
-                src={img}
-                alt={title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-
-            {/* Overlay */}
-            <div
-                className={`absolute inset-0 ${
-                    index === 2
-                        ? "bg-[--color-brand-lime]/70"
-                        : "bg-[--color-brand-light-lime]/70"
-                }`}
-            ></div>
-
             {/* Content */}
-            <div className="relative z-10 p-6 md:p-8 text-[--color-brand-navy]">
-                <h3 className="font-raleway text-lg md:text-xl font-semibold mb-3">
+            <div className="p-3 bg-emerald-900 rounded-md w-fit m-3">
+                <Icon size={30} className="text-brand-light-lime" />
+            </div>
+            <div className="p-3 text-brand-deep-navy">
+                <h3 className="font-spaceGrotesk text-lg md:text-2xl font-medium mb-3">
                     {title}
                 </h3>
-                <p className="font-inter text-sm md:text-base leading-relaxed">
+                <p className="font-inter text-sm md:text-base leading-4.5">
                     {desc}
                 </p>
             </div>
@@ -73,18 +67,30 @@ const Benefits = () => {
     ];
 
     return (
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-40 text-center">
+        <section className="px-[5%] py-40 text-cente bg-emerald-900 m-2 rounded-lg">
             {/* Section Heading */}
-            <h2 className="font-raleway text-5xl font-semibold text-brand-midnight mb-4">
+            <div className="md:flex md:gap-2 md:items-start mb-24 text-brand-light-bg">
+                <h2 className="font-raleway text-5xl font-semibold ">
+                    Why Solar PV Is the Smart Investment for Your Home and the
+                    Planet
+                </h2>
+                <p className="font-inter text-brand-light-bg/90 max-w-md pt-24 md:mt-0 text-base leading-5.5">
+                    At No1 Home Solar, we believe in helping every household
+                    achieve long-term savings and energy independence. Discover
+                    the benefits that make solar PV the smartest choice for
+                    modern homeowners.
+                </p>
+            </div>
+            {/* <h2 className="font-raleway text-5xl font-semibold text-brand-light-bg mb-4">
                 Why Solar PV Is the Smart Investment <br />
                 for Your Home and the Planet
-            </h2>
+            </h2> */}
 
-            <p className="max-w-2xl mx-auto text-brand-navy font-raleway leading-5 mb-12 md:text-lg">
+            {/* <p className="max-w-2xl mx-auto text-brand-light-bg font-raleway leading-5 mb-12 md:text-lg">
                 At No1 Home Solar, we believe in helping every household achieve
                 long-term savings and energy independence. Discover the benefits
                 that make solar PV the smartest choice for modern homeowners.
-            </p>
+            </p> */}
 
             {/* Benefits Grid */}
             <div className="grid md:grid-cols-3 gap-2">
@@ -93,30 +99,34 @@ const Benefits = () => {
                         index={1}
                         title={benefits[0].title}
                         desc={benefits[0].desc}
-                        img={benefits[0].img}
+                        icon={MdOutlineEnergySavingsLeaf}
                     />
                     <BenefitCard
                         index={2}
                         title={benefits[1].title}
                         desc={benefits[1].desc}
-                        img={benefits[1].img}
+                        icon={FaMoneyBillTrendUp}
                     />
                 </div>
                 <div className="h-full w-full rounded-xl overflow-hidden">
-                    <img src="/hero.jpg" alt="" className="h-full w-full object-cover" />
+                    <img
+                        src="/hero.jpg"
+                        alt=""
+                        className="h-full w-full object-cover"
+                    />
                 </div>
                 <div className="flex flex-col gap-2">
                     <BenefitCard
                         index={3}
                         title={benefits[2].title}
                         desc={benefits[2].desc}
-                        img={benefits[2].img}
+                        icon={FaMoneyBillWheat}
                     />
                     <BenefitCard
                         index={4}
                         title={benefits[3].title}
                         desc={benefits[3].desc}
-                        img={benefits[3].img}
+                        icon={PiPlant}
                     />
                 </div>
             </div>

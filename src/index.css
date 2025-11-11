@@ -34,4 +34,10 @@ body {
     --color-brand-neutral-light: #e5eaf0;
     --color-brand-slate: #7a8a99;
     --color-brand-midnight: #071c33;
+    /* Dark Shades */
+    --color-brand-dark-lime: #7ca32c;
+    --color-brand-deep-navy: #072240;
+    --color-brand-charcoal: #0e1a28;
+    --color-brand-muted-slate: #4f5e6c;
+    --color-brand-dark-olive: #5c7120;
 }

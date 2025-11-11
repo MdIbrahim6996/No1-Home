@@ -1,3 +1,5 @@
+import { SiCheckio } from "react-icons/si";
+
 const AdditionalExtra = () => {
     const extras = [
         {
@@ -27,10 +29,10 @@ const AdditionalExtra = () => {
     ];
     console.log(extras);
     return (
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
+        <section className="m-2 my-20 rounded-md px-[5%] md:px-12 py-20 bg-emerald-900">
             {/* Section Header */}
             <div className="md:flex md:justify-between md:items-start mb-12">
-                <h2 className="font-raleway text-[clamp(2rem,4vw,2.5rem)] font-semibold text-[--color-brand-navy] max-w-xl leading-tight">
+                <h2 className="font-raleway text-[clamp(2rem,4vw,2.5rem)] font-semibold text-brand-light-bg max-w-xl leading-tight">
                     More Power, More Savings — Smart Solar Upgrades for Your
                     Home
                 </h2>
@@ -45,15 +47,208 @@ const AdditionalExtra = () => {
             {/* Extras Grid */}
             <div className="-space-y-22">
                 <div className="flex gap-2">
-                    <div className="h-52 flex-1 bg-brand-light-lime rounded-md"></div>
-                    <div className="h-64 flex-1 bg-brand-light-lime rounded-md"></div>
-                    <div className="h-76 flex-1 bg-brand-light-lime rounded-md"></div>
+                    {" "}
+                    <div className="relative group h-100 flex-1 bg-brand-light-lime rounded-md overflow-hidden">
+                        <img
+                            src="/battery.jpg"
+                            className="h-full w-full object-cover"
+                            alt=""
+                        />
+                        <div className="absolute bottom-0 h-full group-hover:translate-y-0 transition-all translate-y-[88%] w-full">
+                            <div className="rounded-md m- p-2 h-full overflow-hidden  backdrop-blur-[10px] bg-linear-to-b from-red to-white/10 shadow-xl">
+                                <h2 className="font-raleway text-center text-3xl text-emerald-900 font-semibold mb-2">
+                                    Battery Add On
+                                </h2>
+                                <div className="px-3 font-raleway text-emerald-900">
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group h-88 flex-1 bg-brand-light-lime rounded-md overflow-hidden">
+                        <img
+                            src="/iboost.png"
+                            className="h-full w-full object-cover"
+                            alt=""
+                        />
+                        <div className="absolute bottom-0 h-full group-hover:translate-y-0 transition-all duration-500 translate-y-[88%] w-full">
+                            <div className="rounded-md m- p-2 h-full overflow-hidden  backdrop-blur-[10px] bg-linear-to-b from-red to-white/10 shadow-xl">
+                                <h2 className="font-raleway text-center text-3xl text-emerald-900 font-semibold mb-2">
+                                    Battery Add On
+                                </h2>
+                                <div className="px-3 font-raleway text-emerald-900">
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group h-76 flex-1 bg-brand-light-lime rounded-md overflow-hidden">
+                        <img
+                            src="/inverter.jpg"
+                            className="h-full w-full object-cover"
+                            alt=""
+                        />
+                        <div className="absolute bottom-0 h-full group-hover:translate-y-0 transition-all duration-500 translate-y-[88%] w-full">
+                            <div className="rounded-md m- p-2 h-full overflow-hidden  backdrop-blur-[10px] bg-linear-to-b from-red to-white/10 shadow-xl">
+                                <h2 className="font-raleway text-center text-3xl text-emerald-900 font-semibold mb-2">
+                                    Battery Add On
+                                </h2>
+                                <div className="px-3 font-raleway text-emerald-900">
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex items-end flex-row-reverse gap-2">
+                    {" "}
+                    <div className="relative group h-100 flex-1 bg-brand-light-lime rounded-md overflow-hidden">
+                        <img
+                            src="/battery.jpg"
+                            className="h-full w-full object-cover"
+                            alt=""
+                        />
+                        <div className="absolute bottom-0 h-full group-hover:translate-y-0 transition-all translate-y-[88%] w-full">
+                            <div className="rounded-md m- p-2 h-full overflow-hidden  backdrop-blur-[10px] bg-linear-to-b from-red to-white/10 shadow-xl">
+                                <h2 className="font-raleway text-center text-3xl text-emerald-900 font-semibold mb-2">
+                                    Battery Add On
+                                </h2>
+                                <div className="px-3 font-raleway text-emerald-900">
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group h-88 flex-1 bg-brand-light-lime rounded-md overflow-hidden">
+                        <img
+                            src="/iboost.png"
+                            className="h-full w-full object-cover"
+                            alt=""
+                        />
+                        <div className="absolute bottom-0 h-full group-hover:translate-y-0 transition-all duration-500 translate-y-[88%] w-full">
+                            <div className="rounded-md m- p-2 h-full overflow-hidden  backdrop-blur-[10px] bg-linear-to-b from-red to-white/10 shadow-xl">
+                                <h2 className="font-raleway text-center text-3xl text-emerald-900 font-semibold mb-2">
+                                    Battery Add On
+                                </h2>
+                                <div className="px-3 font-raleway text-emerald-900">
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group h-76 flex-1 bg-brand-light-lime rounded-md overflow-hidden">
+                        <img
+                            src="/inverter.jpg"
+                            className="h-full w-full object-cover"
+                            alt=""
+                        />
+                        <div className="absolute bottom-0 h-full group-hover:translate-y-0 transition-all duration-500 translate-y-[88%] w-full">
+                            <div className="rounded-md m- p-2 h-full overflow-hidden  backdrop-blur-[10px] bg-linear-to-b from-red to-white/10 shadow-xl">
+                                <h2 className="font-raleway text-center text-3xl text-emerald-900 font-semibold mb-2">
+                                    Battery Add On
+                                </h2>
+                                <div className="px-3 font-raleway text-emerald-900">
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                    <div className="flex items-center  gap-2">
+                                        <SiCheckio className="font-semibold text-2xl" />
+                                        Lorem, ipsum dolor.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="flex items-end flex-row-reverse gap-2">
                     <div className="h-52 flex-1 bg-brand-light-lime rounded-md"></div>
                     <div className="h-64 flex-1 bg-brand-light-lime rounded-md"></div>
                     <div className="h-76 flex-1 bg-brand-light-lime rounded-md"></div>
-                </div>
+                </div> */}
             </div>
             {/* <div className="grid sm:grid-cols-2 md:grid-cols-3 ga">
                 <div className="h-64 bg-red-500">f</div>

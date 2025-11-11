@@ -32,57 +32,77 @@ const FAQs = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="max-w-4xl mx-auto px-6 md:px-10 py-24 text-center">
+        <section className="px-6 md:px-10 py-24 text-center bg-brand-dark-">
             {/* Section Header */}
             <p className="font-inter text-brand-slate text-sm mb-2 uppercase tracking-wide">
                 Trusted By
             </p>
-            <h2 className="font-raleway text-[clamp(2rem,4vw,2.8rem)] font-semibold text-brand-navy mb-12 leading-tight">
-                Any Questions. <br /> We Got You.
+            <h2 className="font-raleway text-[clamp(2rem,4vw,2.8rem)] font-semibold text-brand-deep-navy mb-12 leading-tight">
+                Any Questions. We Got You.
             </h2>
 
             {/* FAQ List */}
-            <div className="space-y-1 text-left">
-                {faqs.map((faq, index) => {
-                    const isOpen = openIndex === index;
-                    return (
-                        <div
-                            key={index}
-                            className={`rounded-2xl bg-brand-light-lime overflow-hidden transition-all duration-300 ${
-                                isOpen ? "py-6" : "py-4"
-                            }`}
-                        >
-                            <button
-                                onClick={() =>
-                                    setOpenIndex(isOpen ? null : index)
-                                }
-                                className="w-full flex justify-between items-center px-6 text-left"
-                            >
-                                <h3 className="font-raleway text-base md:text-lg font-semibold text-brand-navy">
-                                    {faq.question}
-                                </h3>
-                                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-brand-lime text-brand-navy">
-                                    {isOpen ? (
-                                        <Minus size={16} />
-                                    ) : (
-                                        <Plus size={16} />
-                                    )}
-                                </span>
-                            </button>
-
-                            {/* Answer */}
+            <div className="flex gap-3 mx-20">
+                <div className="space-y-1 text-left w-3xl">
+                    {faqs.map((faq, index) => {
+                        const isOpen = openIndex === index;
+                        return (
                             <div
-                                className={`px-6 overflow-hidden transition-all duration-300 ${
-                                    isOpen ? "max-h-96 mt-3" : "max-h-0"
+                                key={index}
+                                className={`rounded-2xl bg-white overflow-hidden transition-all duration-300 ${
+                                    isOpen ? "py-6" : "py-4"
                                 }`}
                             >
-                                <p className="font-inter text-brand-navy/80 text-sm md:text-base leading-5">
-                                    {faq.answer}
-                                </p>
+                                <button
+                                    onClick={() =>
+                                        setOpenIndex(isOpen ? null : index)
+                                    }
+                                    className="w-full flex justify-between items-center px-6 text-left"
+                                >
+                                    <h3 className="font-raleway text-base md:text-lg font-semibold text-brand-navy">
+                                        {faq.question}
+                                    </h3>
+                                    <span className="flex items-center justify-center w-6 h-6 rounded-full text-emerald-900 bg-brand-light-lime">
+                                        {isOpen ? (
+                                            <Minus size={16} />
+                                        ) : (
+                                            <Plus size={16} />
+                                        )}
+                                    </span>
+                                </button>
+
+                                {/* Answer */}
+                                <div
+                                    className={`px-6 overflow-hidden transition-all duration-300 ${
+                                        isOpen ? "max-h-96 mt-3" : "max-h-0"
+                                    }`}
+                                >
+                                    <p className="font-inter text-brand-navy/80 text-sm md:text-base leading-5">
+                                        {faq.answer}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
+                <div className="bg-brand-light-lime text-emerald-900 flex-1 rounded-lg p-4 flex flex-col justify-between">
+                    <div>
+                        <p className="text-3xl font-medium mb-5 font-raleway">
+                            Do You have more questions ?
+                        </p>
+                        <p className="text-lg font-inter text-emerald-900/90 text-left leading-5.5">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing
+                            elit. Ducimus perspiciatis, accusantium voluptate
+                            explicabo ipsa animi saepe delectus laborum! Cumque,
+                            vero? explicabo ipsa animi saepe delectus laborum!
+                            Cumque, vero? explicabo ipsa animi saepe delectus
+                            laborum! Cumque, vero?
+                        </p>
+                    </div>
+                    <button className="font-inter text-brand-light-lime w-full bg-emerald-900 px-10 py-2 rounded-lg font-medium">
+                        Shoot a Direct Mail
+                    </button>
+                </div>
             </div>
         </section>
     );
