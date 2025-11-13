@@ -11,11 +11,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.1.16",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.553.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.5.0",
+    "react-snap": "^1.23.0",
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {

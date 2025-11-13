@@ -11,6 +11,10 @@
 /* body {
     cursor: none !important;
 } */
+:root {
+    --anim-duration: 5;
+    --anim-speed: 0.65;
+}
 
 body {
     -webkit-font-smoothing: antialiased;
@@ -40,4 +44,32 @@ body {
     --color-brand-charcoal: #0e1a28;
     --color-brand-muted-slate: #4f5e6c;
     --color-brand-dark-olive: #5c7120;
+}
+
+.btn:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    animation: shine 1.5s infinite linear; /* Animation */
+}
+
+@keyframes shine {
+    0% {
+        left: -100px;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
 }

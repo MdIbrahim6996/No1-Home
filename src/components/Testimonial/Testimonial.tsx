@@ -1,15 +1,85 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 import { Quote } from "lucide-react";
+import { useRef } from "react";
 import { RiDoubleQuotesR } from "react-icons/ri";
 
 const Testimonial = () => {
+    const textRef = useRef(null);
+    const subtextRef = useRef(null);
+
+    useGSAP(() => {
+        const text = SplitText.create(textRef.current, {
+            type: "lines",
+            mask: "lines",
+        });
+        const subtext = SplitText.create(subtextRef.current, {
+            type: "lines",
+            mask: "lines",
+        });
+        gsap.fromTo(
+            text.lines,
+            {
+                y: "100%",
+            },
+            {
+                y: "0%",
+                stagger: 0.2,
+                duration: 0.5,
+                scrollTrigger: {
+                    trigger: ".testimonial",
+                    start: "top 70%",
+                },
+            }
+        );
+        gsap.fromTo(
+            subtext.lines,
+            {
+                y: "100%",
+            },
+            {
+                y: "0%",
+                stagger: 0.2,
+                duration: 0.5,
+                delay: 0.5,
+                scrollTrigger: {
+                    trigger: ".testimonial",
+                    start: "top center",
+                },
+            }
+        );
+        gsap.fromTo(
+            ".testimonial-grid .card",
+            {
+                y: "100%",
+            },
+            {
+                y: "0%",
+                stagger: 0.2,
+                duration: 0.5,
+                delay: 0.5,
+                scrollTrigger: {
+                    trigger: ".testimonial-grid",
+                    start: "top 70%",
+                },
+            }
+        );
+    });
     return (
-        <section className="px-[5%] py-24">
+        <section className="testimonial px-[5%] py-24">
             {/* Section Header */}
             <div className="md:flex md:gap-2 md:items-start mb-12">
-                <h2 className="font-raleway text-6xl font-semibold text-brand-midnight">
+                <h2
+                    ref={textRef}
+                    className="font-raleway text-6xl font-semibold text-brand-midnight"
+                >
                     Proven Results. Happy Homeowners.
                 </h2>
-                <p className="font-inter text-slate-700 max-w-md pt-20 md:mt-0 text-base leading-5.5">
+                <p
+                    ref={subtextRef}
+                    className="font-inter text-slate-700 max-w-md pt-20 md:mt-0 text-base leading-5.5"
+                >
                     We don’t just install solar panels — we deliver lasting
                     value. Discover how homeowners across the country are saving
                     thousands every year while enjoying cleaner, more reliable
@@ -19,15 +89,15 @@ const Testimonial = () => {
             </div>
 
             {/* Extras Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="h-76 rounded-md overflow-hidden">
+            <div className="testimonial-grid grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="card h-76 rounded-md overflow-hidden">
                     <img
                         src="/hero.jpg"
                         className="h-full w-full object-cover"
                         alt=""
                     />
                 </div>
-                <div className="h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
+                <div className="card h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
                     <div>
                         <RiDoubleQuotesR
                             size={50}
@@ -55,14 +125,14 @@ const Testimonial = () => {
                         </div>
                     </div>
                 </div>
-                <div className="h-76 rounded-md overflow-hidden">
+                <div className="card h-76 rounded-md overflow-hidden">
                     <img
                         src="/hero.jpg"
                         className="h-full w-full object-cover"
                         alt=""
                     />
                 </div>
-                <div className="h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
+                <div className="card h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
                     <div>
                         <Quote
                             size={30}
@@ -90,7 +160,7 @@ const Testimonial = () => {
                         </div>
                     </div>
                 </div>
-                <div className="h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
+                <div className="card h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
                     <div>
                         <Quote
                             size={30}
@@ -118,14 +188,14 @@ const Testimonial = () => {
                         </div>
                     </div>
                 </div>
-                <div className="h-76 rounded-md overflow-hidden">
+                <div className="card h-76 rounded-md overflow-hidden">
                     <img
                         src="/hero.jpg"
                         className="h-full w-full object-cover"
                         alt=""
                     />
                 </div>
-                <div className="h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
+                <div className="card h-76 bg-brand-light-lime/60 rounded-md p-3 flex flex-col justify-between font-raleway">
                     <div>
                         <Quote
                             size={30}
@@ -153,7 +223,7 @@ const Testimonial = () => {
                         </div>
                     </div>
                 </div>
-                <div className="h-76 rounded-md overflow-hidden">
+                <div className="card h-76 rounded-md overflow-hidden">
                     <img
                         src="/hero.jpg"
                         className="h-full w-full object-cover"

@@ -1,72 +1,187 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 import { Check } from "lucide-react";
-import { GiMoebiusTriangle } from "react-icons/gi";
+import { useRef, useState } from "react";
+import { GiMoebiusTriangle, GiCheckeredDiamond } from "react-icons/gi";
+import { IoMdCube } from "react-icons/io";
 
+const plans = [
+    {
+        title: "Essential",
+        price: {
+            monthly: "£19",
+            yearly: "£199",
+        },
+        subtitle: "Perfect for small homes",
+        features: [
+            "Annual Panel Cleaning",
+            "Virtual System Inspection",
+            "Inverter Performance Check.",
+            "Output Report (Basic)",
+        ],
+        button: "Get Started",
+        highlight: false,
+    },
+    {
+        title: "Standard",
+        price: {
+            monthly: "£33",
+            yearly: "£349",
+        },
+        subtitle: "Best for growing families",
+        features: [
+            "Everything Included In Essential.",
+            "Full Electrical Safety Test.",
+            "Detailed Inverter Diagnostics.",
+            "Thermal Imaging Scan.",
+            "System Performance Guarantee.",
+            "Priority Call Out Response.",
+            "Full Photo Report.",
+        ],
+        button: "Get Started",
+        highlight: true,
+    },
+    {
+        title: "Premium",
+        price: {
+            monthly: "£55",
+            yearly: "£599",
+        },
+        subtitle: "For large homes or businesses",
+        features: [
+            "Everything Included In Essential & Standard.",
+            "Unlimited Call Outs Included.",
+            "Parts & Labour Warranty Report(Upto $X/yr).",
+            "Annual Performance Optimization.",
+            "Remote Monitoring Setup.",
+            "Battery & Storage Health Check.",
+            "Extended System Lifetime Guarantee.",
+        ],
+        button: "Get Started",
+        highlight: false,
+    },
+];
 const Pricing = () => {
-    const plans = [
-        {
-            title: "Starter",
-            price: "₹79,000",
-            subtitle: "Perfect for small homes",
-            features: [
-                "Up to 2kW system",
-                "Standard inverter",
-                "Installation & setup",
-                "1-year warranty",
-            ],
-            button: "Get Started",
-            highlight: false,
-        },
-        {
-            title: "Professional",
-            price: "₹1,10,000",
-            subtitle: "Best for growing families",
-            features: [
-                "Up to 5kW system",
-                "Premium inverter",
-                "Battery-ready setup",
-                "3-year maintenance plan",
-            ],
-            button: "Get Started",
-            highlight: true,
-        },
-        {
-            title: "Enterprise",
-            price: "Custom",
-            subtitle: "For large homes or businesses",
-            features: [
-                "Unlimited system capacity",
-                "Commercial-grade inverter",
-                "Custom ROI optimization",
-                "Dedicated support & monitoring",
-            ],
-            button: "Contact Us",
-            highlight: false,
-        },
-    ];
+    const [isMonthly, setIsMonthly] = useState(true);
+    const textRef = useRef(null);
+    const subtextRef = useRef(null);
 
+    useGSAP(() => {
+        const text = SplitText.create(textRef.current, {
+            type: "lines",
+            mask: "lines",
+        });
+        const subtext = SplitText.create(subtextRef.current, {
+            type: "lines",
+            mask: "lines",
+        });
+        gsap.fromTo(
+            text.lines,
+            {
+                y: "100%",
+            },
+            {
+                y: "0%",
+                stagger: 0.2,
+                duration: 0.5,
+                scrollTrigger: {
+                    trigger: ".pricing",
+                    start: "top 70%",
+                },
+            }
+        );
+        gsap.fromTo(
+            subtext.lines,
+            {
+                y: "100%",
+            },
+            {
+                y: "0%",
+                stagger: 0.2,
+                duration: 0.5,
+                delay: 0.5,
+                scrollTrigger: {
+                    trigger: ".pricing",
+                    start: "top center",
+                },
+            }
+        );
+    });
     return (
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 my-20">
-            <h2 className="font-raleway text-[clamp(2rem,4vw,2.5rem)] font-semibold text-brand-navy mb-3">
-                Pricing Plans
-            </h2>
-            <p className="font-inter text-[--color-brand-slate] mb-12">
-                Choose the solar package that fits your home’s needs.
-            </p>
+        <section className="pricing max-w-7xl mx-auto px-6 md:px-12 py-20 my-20">
+            <div className="md:flex md:gap-2 md:items-start mb-24 text-brand-deep-navy">
+                <h2
+                    ref={textRef}
+                    className="font-raleway text-5xl font-semibold"
+                >
+                    Simple Plans. Real Savings. Invest Once. Save for Decades.
+                </h2>
+                <p
+                    ref={subtextRef}
+                    className="font-inter text-brand-deep-navy/90 max-w-md pt-24 md:mt-0 text-base leading-5.5"
+                >
+                    Choose the solar package that fits your home and budget,
+                    designed to give you long-term energy independence,
+                    transparent pricing, and unmatched service quality.
+                </p>
+            </div>
+
+            <div className="flex items-center gap-3 w-fit mx-auto my-10 text-3xl font-spaceGrotesk">
+                <span>Billing Done</span>
+
+                <button
+                    onClick={() => setIsMonthly(!isMonthly)}
+                    className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors duration-300 ${
+                        isMonthly ? "bg-emerald-900" : "bg-brand-light-lime"
+                    }`}
+                >
+                    <span
+                        className={`inline-block h-6 w-6 transform rounded-full bg-white shadow-md transition-transform duration-300 ${
+                            isMonthly ? "translate-x-7" : "translate-x-1"
+                        }`}
+                    />
+                </button>
+
+                <span>{isMonthly ? "Monthly" : "Yearly"}</span>
+            </div>
 
             {/* Pricing Grid */}
             <div className="grid md:grid-cols-3 gap-3">
                 {plans.map((plan, index) => (
                     <div
                         key={index}
-                        className={`rounded-xl shadow-lg overflow-hidden p-8 transition-transform duration-300 hover:-translate-y-2 ${
+                        className={`relative rounded-xl shadow-lg overflow-hidden p-8 transition-transform duration-300 hover:-translate-y-2 ${
                             plan.highlight
                                 ? "bg-emerald-900 text-brand-light-bg"
                                 : "bg-brand-light-bg text-brand-navy border border-slate-300"
                         }`}
                     >
+                        {plan.highlight && (
+                            <p
+                                className="btn overflow-hidden absolute top-3 right-3 font-spaceGrotesk font-medium
+                         bg-brand-lime text-brand-midnight px-4 py-0.5 text-sm rounded-full"
+                            >
+                                Most Popular
+                            </p>
+                        )}
                         {/* Header */}
                         <div>
-                            <GiMoebiusTriangle  size={70} className="rotate-15"/>
+                            {plan.title === "Essential" && (
+                                <IoMdCube size={70} className="rotate-0 mb-1" />
+                            )}
+                            {plan.title === "Standard" && (
+                                <GiMoebiusTriangle
+                                    size={70}
+                                    className="rotate-15"
+                                />
+                            )}
+                            {plan.title === "Premium" && (
+                                <GiCheckeredDiamond
+                                    size={70}
+                                    className="rotate-"
+                                />
+                            )}
                         </div>
                         <h3 className="font-spaceGrotesk text-2xl font-semibold mb-2 uppercase">
                             {plan.title}
@@ -75,15 +190,15 @@ const Pricing = () => {
                             {plan.subtitle}
                         </p>
                         <h2 className="font-inter text-3xl md:text-4xl font-bold mb-6">
-                            {plan.price}
+                            {isMonthly ? plan.price.monthly : plan.price.yearly}
                         </h2>
 
                         {/* Button */}
                         <button
-                            className={`w-full py-3 rounded-md font-inter font-semibold mb-8 transition-all ${
+                            className={`btn relative overflow-hidden w-full py-3 cursor-pointer rounded-md font-spaceGrotesk font-semibold mb-8 transition-all ${
                                 plan.highlight
                                     ? "bg-brand-light-lime text-brand-deep-navy hover:bg-brand-lime"
-                                    : "bg-[--color-brand-lime] text-[--color-brand-navy] hover:bg-[--color-brand-highlight]"
+                                    : "bg-brand-navy text-brand-light-bg hover:bg-[--color-brand-highlight]"
                             }`}
                         >
                             {plan.button}

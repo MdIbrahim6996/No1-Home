@@ -9,6 +9,7 @@ Inspiration
 1. https://t3.tech/
 2. https://lassco.ca/
 3. https://bienes-temlis.webflow.io/home/home-1
+4. https://tympanus.net/Tutorials/MarqueeMenu/
 
 | Element              | Color                             |
 | -------------------- | --------------------------------- |
@@ -27,6 +28,7 @@ Add <title>, <meta name="description">, and <link rel="canonical">
 Include structured data (JSON-LD) if it’s a business site (for Google rich results)
 
 Website Layout Plan (Single Page)
+
 1. Hero Section✔️
    Headline: Harness Your Home’s Natural Sunlight
    Subtext: Save money, add value to your home, and protect the planet.

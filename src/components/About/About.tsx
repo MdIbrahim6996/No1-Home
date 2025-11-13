@@ -1,15 +1,48 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
+
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const AboutSection = () => {
+    const textRef = useRef(null);
+
+    useGSAP(() => {
+        const text = SplitText.create(textRef.current, {
+            type: "lines",
+            mask: "lines",
+        });
+        gsap.fromTo(
+            text.lines,
+            {
+                y: "100%",
+            },
+            {
+                y: "0%",
+                stagger: 0.2,
+                duration: 0.5,
+                scrollTrigger: {
+                    trigger: ".about",
+                    start: "top center",
+                },
+            }
+        );
+    });
     return (
-        <section className="px-[5%] py-40 flex gap-10 items-center">
+        <section className=" about px-[5%] py-40 flex gap-10 items-center">
             {/* LEFT CONTENT */}
             <div className="w-[45%] lex-1">
                 <button className="bg-emerald-900 text-brand-light-bg font-spaceGrotesk text-sm px-5 py-2 rounded-md">
                     About us
                 </button>
 
-                <h2 className="font-raleway tracking-tight text-4xl text-brand-midnight/80 leading-10 mt-6 mb-30">
+                <h2
+                    ref={textRef}
+                    className="font-raleway tracking-tight text-4xl text-brand-midnight/80 leading-10 mt-6 mb-30"
+                >
                     <span className="text-brand-midnight font-medium">
                         No 1 Home’s
                     </span>{" "}
@@ -46,7 +79,7 @@ const AboutSection = () => {
                 </h2>
 
                 <div className="flex items-center h-full">
-                    <button className=" gap-2 bg-emerald-900 text-brand-light-bg font-spaceGrotesk px-5 py-2 rounded-md hover:bg-[--color-brand-midnight] transition-colors">
+                    <button className="gap-2 bg-emerald-900 text-brand-light-bg font-spaceGrotesk px-5 py-2 rounded-md hover:bg-[--color-brand-midnight] transition-colors">
                         Get A Free Quote
                     </button>
                     <button className="bg-emerald-900 text-brand-light-bg h-full px-5 py-2 rounded-md">
