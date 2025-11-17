@@ -92,7 +92,7 @@ const Testimonial = () => {
             <div className="testimonial-grid grid grid-cols-2 md:grid-cols-4 gap-3">
                 <div className="card h-76 rounded-md overflow-hidden">
                     <img
-                        src="/hero.jpg"
+                        src="https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg"
                         className="h-full w-full object-cover"
                         alt=""
                     />
@@ -114,7 +114,7 @@ const Testimonial = () => {
                         </p>
                         <div className="flex items-center gap-3 mt-5">
                             <img
-                                src="/hero.jpg"
+                                src="https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg"
                                 className="h-10 w-10 object-cover rounded-full"
                                 alt=""
                             />
@@ -127,7 +127,7 @@ const Testimonial = () => {
                 </div>
                 <div className="card h-76 rounded-md overflow-hidden">
                     <img
-                        src="/hero.jpg"
+                        src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg"
                         className="h-full w-full object-cover"
                         alt=""
                     />
@@ -149,7 +149,7 @@ const Testimonial = () => {
                         </p>
                         <div className="flex items-center gap-3 mt-5">
                             <img
-                                src="/hero.jpg"
+                                src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg"
                                 className="h-10 w-10 object-cover rounded-full"
                                 alt=""
                             />
@@ -177,7 +177,7 @@ const Testimonial = () => {
                         </p>
                         <div className="flex items-center gap-3 mt-5">
                             <img
-                                src="/hero.jpg"
+                                src="https://images.pexels.com/photos/785667/pexels-photo-785667.jpeg"
                                 className="h-10 w-10 object-cover rounded-full"
                                 alt=""
                             />
@@ -190,7 +190,7 @@ const Testimonial = () => {
                 </div>
                 <div className="card h-76 rounded-md overflow-hidden">
                     <img
-                        src="/hero.jpg"
+                        src="https://images.pexels.com/photos/785667/pexels-photo-785667.jpeg"
                         className="h-full w-full object-cover"
                         alt=""
                     />
@@ -212,7 +212,7 @@ const Testimonial = () => {
                         </p>
                         <div className="flex items-center gap-3 mt-5">
                             <img
-                                src="/hero.jpg"
+                                src="https://images.pexels.com/photos/415263/pexels-photo-415263.jpeg"
                                 className="h-10 w-10 object-cover rounded-full"
                                 alt=""
                             />
@@ -225,7 +225,7 @@ const Testimonial = () => {
                 </div>
                 <div className="card h-76 rounded-md overflow-hidden">
                     <img
-                        src="/hero.jpg"
+                        src="https://images.pexels.com/photos/415263/pexels-photo-415263.jpeg"
                         className="h-full w-full object-cover"
                         alt=""
                     />
