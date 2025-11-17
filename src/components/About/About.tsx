@@ -92,21 +92,24 @@ const AboutSection = () => {
             <div className="w-[55%] h-full  grid grid-cols-2 gap-2">
                 <div className="col-span-1 h-140 row-span-2 rounded-xl overflow-hidden">
                     <img
-                        src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?fm=jpg&q=80&w=800"
+                        // src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?fm=jpg&q=80&w=800"
+                        src="about-1.jpg"
                         alt="Solar panels on home roof"
                         className="w-full h-full object-cover"
                     />
                 </div>
                 <div className="rounded-xl overflow-hidden">
                     <img
-                        src="https://plus.unsplash.com/premium_photo-1682148196781-8bbcdfd7f537?fm=jpg&q=80&w=800"
+                        src="https://images.pexels.com/photos/15751124/pexels-photo-15751124.jpeg"
+                        // src="https://plus.unsplash.com/premium_photo-1682148196781-8bbcdfd7f537?fm=jpg&q=80&w=800"
                         alt="Solar technician installing panels"
                         className="w-full h-full object-cover"
                     />
                 </div>
                 <div className="rounded-xl overflow-hidden">
                     <img
-                        src="https://images.unsplash.com/photo-1691421740425-48ff22b6d442?fm=jpg&q=80&w=800"
+                        src="https://images.pexels.com/photos/15751120/pexels-photo-15751120.jpeg"
+                        // src="https://images.unsplash.com/photo-1691421740425-48ff22b6d442?fm=jpg&q=80&w=800"
                         alt="Modern solar setup on building"
                         className="w-full h-full object-cover"
                     />

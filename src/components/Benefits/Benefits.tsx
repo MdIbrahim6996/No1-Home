@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
+import BeforeAfterSlider from "../ImageSlider";
 
 const BenefitCard = ({
     index,
@@ -135,17 +136,6 @@ const Benefits = () => {
                     modern homeowners.
                 </p>
             </div>
-            {/* <h2 className="font-raleway text-5xl font-semibold text-brand-light-bg mb-4">
-                Why Solar PV Is the Smart Investment <br />
-                for Your Home and the Planet
-            </h2> */}
-
-            {/* <p className="max-w-2xl mx-auto text-brand-light-bg font-raleway leading-5 mb-12 md:text-lg">
-                At No1 Home Solar, we believe in helping every household achieve
-                long-term savings and energy independence. Discover the benefits
-                that make solar PV the smartest choice for modern homeowners.
-            </p> */}
-
             {/* Benefits Grid */}
             <div className="grid md:grid-cols-3 gap-2">
                 <div className="flex flex-col gap-2">
@@ -163,10 +153,16 @@ const Benefits = () => {
                     />
                 </div>
                 <div className="h-full w-full rounded-xl overflow-hidden">
-                    <img
-                        src="/hero.jpg"
+                    {/* <img
+                        //src="/hero.jpg"
+                        src="https://images.pexels.com/photos/31912311/pexels-photo-31912311.jpeg"
                         alt=""
-                        className="h-full w-full object-cover"
+                        className="h-[510px] w-full object-cover"
+                    /> */}
+
+                    <BeforeAfterSlider
+                        beforeSrc="/before-3.png"
+                        afterSrc="/after-3.png"
                     />
                 </div>
                 <div className="flex flex-col gap-2">

@@ -39,7 +39,7 @@ const Hero = () => {
                 y: "0%",
                 stagger: 0.1,
                 duration: 0.7,
-                delay: 0.5,
+                delay: 1.25,
             }
         );
     }, []);
@@ -47,12 +47,16 @@ const Hero = () => {
         <section
             className="relative overflow-hidden h-screen w- bg-cover bg-center flex flex-col justify-end m-1.5 px-8 md:px-20 pb-20 rounded-lg"
             style={{
-                backgroundImage: "url('/hero.jpg')", // replace with your actual image path
+                backgroundImage: "url('/hero-new.jpg')", // replace with your actual image path
+               // backgroundImage: "url('https://images.unsplash.com/photo-1655300283246-1ef0317a565d?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", // replace with your actual image path
             }}
         >
             {/* Overlay for better contrast */}
             {/* <div className="absolute inset-0 bg-[rgba(12,53,89,0.65)] rounded-2xl"></div> */}
-            <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)] rounded-2xl"></div>
+            <div
+                className="absolute inset-0 bg-[rgba(0,0,0,0.5) bg-linear-to-b
+                 from-[rgba(0,0,0,0.15)] via-[rgba(0,0,0,0.25)] via-45% to-[rgba(0,0,0,0.9)]"
+            ></div>
 
             {/* Content */}
             <div className="relative z max-w-3xl">

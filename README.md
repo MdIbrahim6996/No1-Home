@@ -1,8 +1,10 @@
-1. Raleway
-2. Inter
-3. Elm Sans
-4. IBm Plex Mono
-5. QuickSand
+1.  Raleway
+2.  Inter
+3.  Elm Sans
+4.  IBm Plex Mono
+5.  QuickSand
+
+"postbuild": "npx prerender-cli --static-dir dist --index dist/index.html --routes /",
 
 Inspiration
 
