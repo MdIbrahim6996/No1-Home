@@ -73,7 +73,12 @@ const Benefits = () => {
     const textRef = useRef(null);
     const subtextRef = useRef(null);
 
-    useGSAP(() => {
+    useGSAP(async () => {
+        // Wait until all custom fonts are loaded
+        await document.fonts.ready;
+
+        // Force browser to finalize text layout
+        gsap.set(subtextRef.current, { opacity: 1 });
         const text = SplitText.create(textRef.current, {
             type: "lines",
             mask: "lines",
@@ -85,10 +90,10 @@ const Benefits = () => {
         gsap.fromTo(
             text.lines,
             {
-                y: "100%",
+                yPercent: 100,
             },
             {
-                y: "0%",
+                yPercent: 0,
                 stagger: 0.2,
                 duration: 0.5,
                 scrollTrigger: {
@@ -113,22 +118,39 @@ const Benefits = () => {
                 },
             }
         );
+
+        // gsap.from(subtextRef.current, {
+        //     y: 30,
+        //     opacity: 0,
+        //     scale: 0.98,
+        //     duration: 0.8,
+        //     ease: "power3.out",
+        //     delay: 0.15,
+        //     scrollTrigger: {
+        //         trigger: ".benefits",
+        //         start: "top 75%",
+        //     },
+        // });
     });
 
     return (
-        <section className="benefits px-[5%] py-20 my-20 text-cente bg-emerald-900 m-2 rounded-lg">
+        <section
+            id="benefits"
+            className="benefits md:px-[5%] px-2 py-20 my-20 bg-emerald-900 md:m-2 md:rounded-lg"
+        >
             {/* Section Heading */}
-            <div className="md:flex md:gap-2 md:items-start mb-24 text-brand-light-bg">
+
+            <div className="md:flex gap-2 items-start mb-24">
                 <h2
                     ref={textRef}
-                    className="font-raleway text-5xl font-semibold "
+                    className="font-raleway md:text-5xl text-3xl font-semibold text-brand-light-bg"
                 >
-                    Why Solar PV Is the Smart Investment for Your Home and the
-                    Planet
+                    Why Solar PV is the Smart Investment for Your Home and the
+                    Planet.
                 </h2>
                 <p
                     ref={subtextRef}
-                    className="font-inter text-brand-light-bg/90 max-w-md pt-24 md:mt-0 text-base leading-5.5"
+                    className="font-inter ml-auto w-[90%] text-brand-light-bg/90 max-w-md md:pt-24 pt-5 md:mt-0 text-base leading-5.5"
                 >
                     At No1 Home Solar, we believe in helping every household
                     achieve long-term savings and energy independence. Discover
@@ -136,6 +158,24 @@ const Benefits = () => {
                     modern homeowners.
                 </p>
             </div>
+            {/* <div className="md:flex gap-2 items-start mb-24">
+                <h2
+                    ref={textRef}
+                    className="font-raleway md:w-[60%] md:text-5xl text-3xl font-semibold text-brand-light-bg"
+                >
+                    Why Solar PV is the Smart Investment for Your Home and the
+                    Planet.
+                </h2>
+                <p
+                    ref={subtextRef}
+                    className="overflow-hidden font-inter border ml-auto w-[90%] md:max-w-[40%] text-brand-light-bg/90 md:pt-24 pt-5 md:mt-0 text-base leading-5.5"
+                >
+                    At No1 Home Solar, we believe in helping every household
+                    achieve long-term savings and energy independence. Discover
+                    the benefits that make solar PV the smartest choice for
+                    modern homeowners.
+                </p>
+            </div> */}
             {/* Benefits Grid */}
             <div className="grid md:grid-cols-3 gap-2">
                 <div className="flex flex-col gap-2">
@@ -153,13 +193,6 @@ const Benefits = () => {
                     />
                 </div>
                 <div className="h-full w-full rounded-xl overflow-hidden">
-                    {/* <img
-                        //src="/hero.jpg"
-                        src="https://images.pexels.com/photos/31912311/pexels-photo-31912311.jpeg"
-                        alt=""
-                        className="h-[510px] w-full object-cover"
-                    /> */}
-
                     <BeforeAfterSlider
                         beforeSrc="/before-3.png"
                         afterSrc="/after-3.png"

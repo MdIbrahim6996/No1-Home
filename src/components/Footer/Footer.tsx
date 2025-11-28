@@ -2,10 +2,10 @@ import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className="relative bg-slate-100 text-brand-midnight pt-24 pb-12 px-8 md:px-16 text-center md:text-left">
+        <footer className="relative bg-slate-100 text-brand-midnight md:pt-24 pt-12 pb-12 px-4 md:px-16 text-center md:text-left">
             {/* Background circle accent */}
             <div className="absolute inset-0 flex justify-center items-center opacity-15">
-                <div className="w-[600px] h-[600px] bg-brand-lime rounded-full blur-3x"></div>
+                <div className="md:w-[600px] w-[500px] md:h-[600px] h-[500px] bg-brand-lime rounded-full blur-3x"></div>
             </div>
 
             {/* Main Headline */}
@@ -13,8 +13,8 @@ const Footer = () => {
                 <p className="font-inter text-sm mb-2 tracking-wide">
                     Got a project? Let’s collaborate.
                 </p>
-                <h2 className="font-raleway text-8xl font-bold uppercase tracking-tight">
-                    GET IN ToUCH
+                <h2 className="font-raleway md:text-8xl text-6xl font-bold uppercase tracking-tight">
+                    GET IN TOUCH
                 </h2>
             </div>
 

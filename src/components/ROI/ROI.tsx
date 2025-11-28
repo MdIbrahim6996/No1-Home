@@ -36,7 +36,10 @@ const roiStats = [
 const ROI = () => {
     const textRef = useRef(null);
 
-    useGSAP(() => {
+    useGSAP(async () => {
+        await document.fonts.ready;
+        gsap.set(textRef.current, { opacity: 1 });
+
         const text = SplitText.create(textRef.current, {
             type: "lines",
             mask: "lines",
@@ -59,9 +62,12 @@ const ROI = () => {
     });
 
     return (
-        <section className="roi relative overflow-hidden px-[5% py-40 bg-brand-midnigh bg-[url('/returnOn.jpg')] bg-linear-to-b from-black to-black/50 bg-cover m-2 rounded-lg">
+        <section
+            id="roi"
+            className="roi relative overflow-hidden px-4 py-40 bg-brand-midnigh bg-[url('/returnOn.jpg')] bg-linear-to-b from-black to-black/50 bg-cover md:m-2 md:rounded-lg"
+        >
             {/* Accent Marker */}
-            <div className="absolute inset-0 h-full w-full bg-black/70"></div>
+            <div className="absolute inset-0 h-full w-full bg-black/80"></div>
             {/* <img src="/returnOn.jpg" className="h-full w-full bg-cover absolute " alt="" /> */}
             <div className="relative">
                 <div className="border w-fit px-10 py-1 border-brand-light-lime text-brand-light-lime rounded-full mx-auto mb-8">
@@ -71,8 +77,8 @@ const ROI = () => {
                 {/* Description */}
                 <p
                     ref={textRef}
-                    className="font-raleway text-center text-lg md:text-2xl text-brand-light-lime max-w-5xl text- 
-             mx-auto leading-7 mb-12"
+                    className="font-raleway text-center text-lg md:text-2xl text-brand-light-lime max-w-5xl 
+             mx-auto md:leading-7 leading-6 mb-12"
                 >
                     Solar energy offers one of the most reliable and rewarding
                     returns on investment for homeowners today. By generating
@@ -89,15 +95,16 @@ const ROI = () => {
                 </p>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-15 mt-10  w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-15 mt-10  md:w-5xl md:mx-auto mx-5">
                     {roiStats.map((item, index) => (
                         <div
                             key={index}
-                            className="border-l border-brand-dark-lime bg-brand-light-lim py- pr-1 pl-3 shadow-sm hover:shadow-md transition-all duration-300"
+                            className="border-l border-brand-dark-lime py- pr-1 pl-3 shadow-sm hover:shadow-md transition-all duration-300"
                         >
                             <h3 className="font-inter text-3xl md:text-4xl font-bold text-brand-lime mb-2">
                                 {item.value}
                             </h3>
+
                             <p className="font-spaceGrotesk text-brand-light-lime text-sm md:text-xl mb-2">
                                 {item.label}
                             </p>

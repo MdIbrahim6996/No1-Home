@@ -105,7 +105,7 @@ const InstallationProcess = () => {
         );
     });
     return (
-        <section className="install mx-2 relative mt-20 rounded-t-md overflow-hidden bg-emerald-900">
+        <section id="installation" className="install md:mx-2 relative mt-20 md:rounded-t-md overflow-hidden bg-emerald-900">
             <img
                 src="/panel-install.jpg"
                 className="absolute inset-0 w-full h-full object-cover"
@@ -113,19 +113,19 @@ const InstallationProcess = () => {
             />
             <div className="absolute inset-0 bg-black/50" />
 
-            <div className="relative px-[5%] py-20">
-                <div className="flex gap-2 items-start mb-24 text-brand-light-bg">
-                    <h2 ref={textRef} className="font-raleway text-5xl font-semibold ">
-                        A Seamless Installation Experience from Start to Finish
+            <div className="relative md:px-[5%] px-2 py-20">
+                <div className="md:flex gap-2 items-start mb-24 text-brand-lime">
+                    <h2 ref={textRef} className="font-raleway md:text-5xl text-3xl font-semibold ">
+                        A Seamless Installation Experience from Start to Finish.
                     </h2>
-                    <p ref={subtextRef} className="font-inter text-brand-light-bg/90 max-w-md pt-24 md:mt-0 text-base leading-5.5">
+                    <p ref={subtextRef} className="font-inter ml-auto w-[90%] text-brand-light-bg/90 max-w-md md:pt-24 pt-5 md:mt-0 text-base leading-5.5">
                         Our expert installation team ensures your solar system
                         is fitted safely, efficiently, and with absolute
                         precision — so you can start saving from day one.
                     </p>
                 </div>
 
-                <div className="install-grid grid grid-cols-3 gap-3 h-full">
+                <div className="install-grid grid md:grid-cols-3 md:gap-3 gap-2 h-full">
                     {installationSteps.map((item) => (
                         <InstallationCard
                             itemNo={item.id}

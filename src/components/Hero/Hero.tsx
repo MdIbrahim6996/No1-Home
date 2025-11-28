@@ -1,81 +1,245 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(SplitText);
 
+const slides = [
+    {
+        id: 0,
+        title: "Harness Your Home’s Natural Sunlight.",
+        subtitle:
+            "At No1 Home Solar, we help homeowners unlock their property’s natural energy potential. Save money, reduce your carbon footprint, and power your home sustainably with premium solar systems.",
+        image: "/hero-desktop.webp",
+    },
+    {
+        id: 1,
+        title: "Power Your Home With Clean Energy.",
+        subtitle:
+            "Cut energy bills, increase property value, and enjoy uninterrupted solar power with our expert installation and high-efficiency panels.",
+        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    },
+    {
+        id: 2,
+        title: "Switch to Solar. Save More Every Month.",
+        subtitle:
+            "Lower your monthly bills, reduce your carbon footprint, and enjoy clean energy independence with trusted solar professionals.",
+        image: "/hero-2.jpg",
+    },
+];
+
 const Hero = () => {
+    const [index, setIndex] = useState<number>(0);
+
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
-    useGSAP(() => {
-        const titleText = SplitText.create(titleRef.current, {
-            type: "lines",
-            mask: "lines",
-        });
-        const subtitleText = SplitText.create(subtitleRef.current, {
-            type: "lines",
-            mask: "lines",
-        });
+    // useGSAP(() => {
+    //     const titleText = SplitText.create(titleRef.current, {
+    //         type: "lines",
+    //         mask: "lines",
+    //         linesClass: "split-line",
+    //     });
+    //     const subtitleText = SplitText.create(subtitleRef.current, {
+    //         type: "lines",
+    //         mask: "lines",
+    //         linesClass: "split-line",
+    //     });
 
-        gsap.fromTo(
-            titleText.lines,
-            {
-                y: "100%",
-            },
-            {
-                y: "0%",
-                stagger: 0.3,
-                duration: 0.8,
-                delay: 0.5,
-            }
-        );
-        gsap.fromTo(
-            subtitleText.lines,
-            {
-                y: "100%",
-            },
-            {
-                y: "0%",
-                stagger: 0.1,
-                duration: 0.7,
-                delay: 1.25,
-            }
-        );
-    }, []);
+    //     gsap.fromTo(
+    //         titleText.lines,
+    //         {
+    //             y: "100%",
+    //         },
+    //         {
+    //             y: "0%",
+    //             stagger: 0.3,
+    //             duration: 0.8,
+    //             delay: 0.5,
+    //         }
+    //     );
+    //     gsap.fromTo(
+    //         subtitleText.lines,
+    //         {
+    //             y: "100%",
+    //         },
+    //         {
+    //             y: "0%",
+    //             stagger: 0.1,
+    //             duration: 0.7,
+    //             delay: 1.25,
+    //         }
+    //     );
+
+    //     gsap.from("#hero .hero_image", {
+    //         opacity: 0,
+    //         scale: 1.1,
+    //         duration: 1.5,
+    //         ease: "power3.out",
+    //     });
+
+    //     return () => {
+    //         titleText.revert();
+    //         subtitleText.revert();
+    //         gsap.killTweensOf("#hero .hero_image");
+    //         gsap.killTweensOf(titleText.lines);
+    //         gsap.killTweensOf(subtitleText.lines);
+    //     };
+    // }, [index]);
+
+    // 🔥 Animate header & subheader whenever index changes
+
+    // 🔁 Auto slide
+    useGSAP(
+        () => {
+            if (!titleRef.current || !subtitleRef.current) return;
+
+            // Create fresh SplitText instances
+            const titleSplit = new SplitText(titleRef.current, {
+                type: "lines",
+                linesClass: "split-line",
+            });
+
+            const subtitleSplit = new SplitText(subtitleRef.current, {
+                type: "lines",
+                linesClass: "split-line",
+            });
+
+            const tl = gsap.timeline();
+
+            tl.fromTo(
+                titleSplit.lines,
+                { yPercent: 100, opacity: 0 },
+                {
+                    yPercent: 0,
+                    opacity: 1,
+                    stagger: 0.2,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    delay: 0.1,
+                }
+            ).fromTo(
+                subtitleSplit.lines,
+                { yPercent: 100, opacity: 0 },
+                {
+                    yPercent: 0,
+                    opacity: 1,
+                    stagger: 0.1,
+                    duration: 0.7,
+                    ease: "power3.out",
+                    delay: 0.1,
+                },
+                "-=0.3"
+            );
+
+            // Image fade/zoom – always ends at opacity:1, scale:1
+            tl.fromTo(
+                "#hero .hero_image",
+                { opacity: 0, scale: 1.05 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1.5,
+                    ease: "power3.out",
+                },
+                0
+            );
+
+            // 🔥 IMPORTANT: cleanup so SplitText doesn't keep nesting
+            return () => {
+                titleSplit.revert();
+                subtitleSplit.revert();
+                gsap.killTweensOf("#hero .hero_image");
+                gsap.killTweensOf(titleSplit.lines);
+                gsap.killTweensOf(subtitleSplit.lines);
+            };
+        },
+        { dependencies: [index] }
+    );
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % slides.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [index]);
     return (
         <section
-            className="relative overflow-hidden h-screen w- bg-cover bg-center flex flex-col justify-end m-1.5 px-8 md:px-20 pb-20 rounded-lg"
-            style={{
-                backgroundImage: "url('/hero-new.jpg')", // replace with your actual image path
-               // backgroundImage: "url('https://images.unsplash.com/photo-1655300283246-1ef0317a565d?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", // replace with your actual image path
-            }}
+            id="home"
+            className="relative overflow-hidden h-screen flex flex-col justify-end md:m-1.5 px-4 md:px-20 pb-20 md:rounded-lg"
         >
+            <picture>
+                {/* <source srcSet="/hero-mobile.webp" media="(max-width: 768px)" /> */}
+                <img
+                    // src="/hero-desktop.webp"
+                    src={slides[index].image}
+                    alt=""
+                    className="hero_image absolute inset-0 w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                />
+            </picture>
             {/* Overlay for better contrast */}
-            {/* <div className="absolute inset-0 bg-[rgba(12,53,89,0.65)] rounded-2xl"></div> */}
+
             <div
-                className="absolute inset-0 bg-[rgba(0,0,0,0.5) bg-linear-to-b
-                 from-[rgba(0,0,0,0.15)] via-[rgba(0,0,0,0.25)] via-45% to-[rgba(0,0,0,0.9)]"
+                className="hidden md:block absolute inset-0 bg-linear-to-b
+                 from-black/15 via-black/25 via-45% to-black/90"
+            ></div>
+            <div
+                className="md:hidden absolute inset-0 bg-linear-to-b
+                 from-[rgba(0,0,0,0.15)] via-[rgba(0,0,0,0.85)] via-65% to-[rgba(0,0,0,0.9)]"
             ></div>
 
             {/* Content */}
-            <div className="relative z max-w-3xl">
+            <div className="relative md:max-w-3xl">
                 <h1
                     ref={titleRef}
-                    className="font-raleway text-7xl font-semibold text-brand-light-bg leading-18"
+                    className="will-change-transform will-change-opacity font-raleway md:text-7xl text-5xl font-semibold text-brand-light-bg md:leading-18 leading-12"
                 >
-                    Harness Your Home’s Natural Sunlight
+                    {slides[index].title}
                 </h1>
 
                 <p
                     ref={subtitleRef}
-                    className="mt-4 max-w-md font-inter text-brand-lime text-base md:text-lg leading-5.5"
+                    className="will-change-transform will-change-opacity mt-4 max-w-lg font-inter text-brand-lime text-base md:text-lg md:leading-5.5 leading-4.5"
                 >
-                    At No1 Home Solar, we help homeowners unlock their
-                    property’s natural energy potential. Save money, reduce your
-                    carbon footprint, and power your home sustainably with
-                    premium solar systems.
+                    {slides[index].subtitle}
                 </p>
+            </div>
+
+            {/* Bottom Grid */}
+            <div className="absolute hidden md:grid right-20 bottom-10 grid-cols-3 gap-2 w-fit ">
+                {slides.map((slide, i) => (
+                    <div
+                        className={`h-20 w-20 rounded-md overflow-hidden ${
+                            i === index ? "border" : ""
+                        } border-brand-light-bg p-1`}
+                        onClick={() => setIndex(i)}
+                    >
+                        <img
+                            src={slide.image}
+                            className="h-full w-full object-cover rounded-[3px]"
+                            alt=""
+                        />
+                    </div>
+                ))}
+            </div>
+            <div className="absolute grid md:hidden right-5 bottom-5 grid-cols-3 gap-0.5 w-fit ">
+                {slides.map((slide, i) => (
+                    <div
+                        className={`h-10 w-10 rounded-md overflow-hidden ${
+                            i === index ? "border" : ""
+                        }  border-brand-light-bg p-0.5`}
+                        onClick={() => setIndex(i)}
+                    >
+                        <img
+                            src={slide.image}
+                            className="h-full w-full object-cover rounded-[3px]"
+                            alt=""
+                        />
+                    </div>
+                ))}
             </div>
         </section>
     );

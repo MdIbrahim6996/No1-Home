@@ -4,14 +4,11 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [
-        react(),
-        tailwindcss(),
-    
-    ],
+    plugins: [react(), tailwindcss()],
     server: {
-        host: "0.0.0.0",
-        port: 5173,
-        allowedHosts: [".loca.lt"], // ✅ allow all LocalTunnel subdomains
+        host: true,
+        allowedHosts: [
+            "nathanael-palaeoentomological-sincerely.ngrok-free.dev",
+        ],
     },
 });

@@ -2,9 +2,9 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 const Contact = () => {
     return (
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 grid md:grid-cols-2 gap-12 items-start">
+        <section id="contact" className="max-w-7xl mx-auto md:px-12 py-24 grid md:grid-cols-2 gap-12 items-start">
             {/* LEFT — Contact Info */}
-            <div className="space-y-8 text-brand-deep-navy mt-2">
+            <div className="md:space-y-8 space-y-4 text-brand-deep-navy mt-2 px-4">
                 {/* Chat */}
                 <div className="flex items-start gap-4">
                     <MapPin className="w-6 h-6 mt-1" />
@@ -61,7 +61,7 @@ const Contact = () => {
             </div>
 
             {/* RIGHT — Form */}
-            <div className="bg-emerald-900 p-8 rounded-xl shadow-sm text-brand-light-lime">
+            <div className="bg-emerald-900 md:p-8 p-4 py-20 md:rounded-xl shadow-sm text-brand-light-lime">
                 <h3 className="font-raleway text-2xl md:text-3xl font-semibold mb-2">
                     Got Ideas? We’ve got the skills. Let’s team up.
                 </h3>
@@ -87,8 +87,8 @@ const Contact = () => {
                     <div>
                         <textarea
                             placeholder="Tell us about the project."
-                            rows={3}
-                            className="w-full bg-transparent border-b  py-2 focus:outline-none font-inter text-sm md:text-base"
+                            rows={5}
+                            className=" h-40 md:h-auto w-full bg-transparent border-b  py-2 focus:outline-none font-inter text-sm md:text-base"
                         ></textarea>
                     </div>
                     <button

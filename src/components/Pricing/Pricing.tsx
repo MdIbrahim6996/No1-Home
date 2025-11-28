@@ -109,25 +109,41 @@ const Pricing = () => {
         );
     });
     return (
-        <section className="pricing max-w-7xl mx-auto px-6 md:px-12 py-20 my-20">
-            <div className="md:flex md:gap-2 md:items-start mb-24 text-brand-deep-navy">
+        <section id="pricing" className="pricing max-w-7xl mx-auto px-2 md:px-12 py-20 my-20">
+            <div className="md:flex gap-2 items-start mb-24">
                 <h2
                     ref={textRef}
-                    className="font-raleway text-5xl font-semibold"
+                    className="font-raleway md:text-5xl text-3xl font-semibold text-brand-midnight"
                 >
                     Simple Plans. Real Savings. Invest Once. Save for Decades.
                 </h2>
                 <p
                     ref={subtextRef}
-                    className="font-inter text-brand-deep-navy/90 max-w-md pt-24 md:mt-0 text-base leading-5.5"
+                    className="font-inter ml-auto w-[90%] text-slate-700 max-w-md md:pt-24 pt-5 md:mt-0 text-base leading-5.5"
                 >
                     Choose the solar package that fits your home and budget,
                     designed to give you long-term energy independence,
                     transparent pricing, and unmatched service quality.
                 </p>
             </div>
+            {/* <div className="md:flex md:gap-2 md:items-start md:mb-24 text-brand-deep-navy">
+                <h2
+                    ref={textRef}
+                    className="font-raleway md:text-5xl text-3xl font-semibold"
+                >
+                    Simple Plans. Real Savings. Invest Once. Save for Decades.
+                </h2>
+                <p
+                    ref={subtextRef}
+                    className="font-inter text-brand-deep-navy/90 max-w-md md:pt-24 pt-5 md:mt-0 text-base leading-5.5"
+                >
+                    Choose the solar package that fits your home and budget,
+                    designed to give you long-term energy independence,
+                    transparent pricing, and unmatched service quality.
+                </p>
+            </div> */}
 
-            <div className="flex items-center gap-3 w-fit mx-auto my-10 text-3xl font-spaceGrotesk">
+            <div className="flex items-center gap-3 w-fit mx-auto my-10 md:text-3xl text-xl font-spaceGrotesk">
                 <span>Billing Done</span>
 
                 <button
@@ -143,7 +159,7 @@ const Pricing = () => {
                     />
                 </button>
 
-                <span>{isMonthly ? "Monthly" : "Yearly"}</span>
+                <span className="w-20">{isMonthly ? "Monthly" : "Yearly"}</span>
             </div>
 
             {/* Pricing Grid */}

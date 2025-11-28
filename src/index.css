@@ -16,6 +16,10 @@
     --anim-speed: 0.65;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -72,4 +76,29 @@ body {
     100% {
         left: 100%;
     }
+}
+
+@keyframes slideFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.animate-slideFadeUp {
+    animation: 0.5s slideFadeUp 1.2s ease forwards;
+}
+
+/* delay utility */
+.animation-delay-300 {
+    animation-delay: 1.5s;
+}
+
+.split-line {
+    display: block;
+    overflow: hidden;
 }

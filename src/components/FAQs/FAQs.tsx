@@ -32,7 +32,7 @@ const FAQs = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="px-6 md:px-10 py-24 text-center bg-brand-dark-">
+        <section id="faqs" className="px-2 md:px-10 py-24 text-center bg-brand-dark-">
             {/* Section Header */}
             <p className="font-inter text-brand-slate text-sm mb-2 uppercase tracking-wide">
                 Trusted By
@@ -42,8 +42,8 @@ const FAQs = () => {
             </h2>
 
             {/* FAQ List */}
-            <div className="flex gap-3 mx-20">
-                <div className="space-y-1 text-left w-3xl">
+            <div className="flex flex-col md:flex-row gap-3 md:mx-20">
+                <div className="space-y-1 text-left md:w-3xl">
                     {faqs.map((faq, index) => {
                         const isOpen = openIndex === index;
                         return (
@@ -53,23 +53,23 @@ const FAQs = () => {
                                     isOpen ? "py-6" : "py-4"
                                 }`}
                             >
-                                <button
+                                <div
                                     onClick={() =>
                                         setOpenIndex(isOpen ? null : index)
                                     }
-                                    className="w-full flex justify-between items-center px-6 text-left"
+                                    className="w-full flex justify-between gap-2 items-center px-6 text-left"
                                 >
                                     <h3 className="font-raleway text-base md:text-lg font-semibold text-brand-navy">
                                         {faq.question}
                                     </h3>
-                                    <span className="flex items-center justify-center w-6 h-6 rounded-full text-emerald-900 bg-brand-light-lime">
+                                    <div className="flex items-center justify-center min-w-6 min-h-6 rounded-full text-emerald-900 bg-brand-light-lime">
                                         {isOpen ? (
                                             <Minus size={16} />
                                         ) : (
                                             <Plus size={16} />
                                         )}
-                                    </span>
-                                </button>
+                                    </div>
+                                </div>
 
                                 {/* Answer */}
                                 <div
@@ -85,7 +85,7 @@ const FAQs = () => {
                         );
                     })}
                 </div>
-                <div className="bg-brand-light-lime text-emerald-900 flex-1 rounded-lg p-4 flex flex-col justify-between">
+                <div className=" bg-brand-light-lime text-emerald-900 flex-1 rounded-lg p-4 flex flex-col justify-between">
                     <div>
                         <p className="text-3xl font-medium mb-5 font-raleway">
                             Do You have more questions ?
@@ -99,7 +99,7 @@ const FAQs = () => {
                             laborum! Cumque, vero?
                         </p>
                     </div>
-                    <button className="font-inter text-brand-light-lime w-full bg-emerald-900 px-10 py-2 rounded-lg font-medium">
+                    <button className="font-inter text-brand-light-lime w-full bg-emerald-900 px-10 py-2 rounded-lg font-medium mt-2">
                         Shoot a Direct Mail
                     </button>
                 </div>

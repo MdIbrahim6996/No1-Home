@@ -1,5 +1,8 @@
+// import HeroCarousel from "./components/Carousel";
 import Footer from "./components/Footer/Footer";
+// import Navbar from "./components/MobileNav";
 import Navbar from "./components/Navbar/Navbar";
+// import HeroCarousel from "./components/NewCarousel";
 import Home from "./pages/Home/Home";
 
 const App = () => {
@@ -18,6 +21,7 @@ const App = () => {
                 afterSrc="/after-3.png"
             /> */}
             {/* <GlassCard /> */}
+            {/* <HeroCarousel /> */}
             <Navbar />
             <Home />
             <Footer />

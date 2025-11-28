@@ -1,5 +1,5 @@
 import About from "../../components/About/About";
-import AdditionalExtra from "../../components/AdditionalExtra/AdditionalExtra";
+// import AdditionalExtra from "../../components/AdditionalExtra/AdditionalExtra";
 import Benefits from "../../components/Benefits/Benefits";
 import Contact from "../../components/Contact/Contact";
 import FAQs from "../../components/FAQs/FAQs";
@@ -21,7 +21,7 @@ const Home = () => {
             <TrustedBrands />
             <InstallationProcess />
             {/* <Packages />  same as Pricing*/}
-            <AdditionalExtra />
+            {/* <AdditionalExtra /> */}
             <Testimonial />
             <ROI />
             <FAQs />
