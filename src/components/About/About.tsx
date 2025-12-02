@@ -101,8 +101,8 @@ const AboutSection = () => {
             </div>
 
             {/* RIGHT IMAGE GRID */}
-            <div className="md:w-[55%] h-full  grid grid-cols-2 gap-2">
-                <div className="col-span-2 md:col-span-1 h-147 row-span-2 rounded-xl overflow-hidden">
+            <div className="md:w-[55%] md:h-140 h-full grid grid-cols-2 gap-2">
+                <div className="col-span-2 md:col-span-1 md:h-full h-140 row-span-2 rounded-xl overflow-hidden">
                     <img
                         // src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?fm=jpg&q=80&w=800"
                         src="hero-prod.png"
