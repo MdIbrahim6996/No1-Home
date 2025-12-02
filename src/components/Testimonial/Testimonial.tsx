@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from "react";
 import TestimonialCard from "../TestimonialCard/TestimonialCard";
+import { useAutoFetch } from "../../hooks/useAutoFetch";
 
 const testimonials = [
     {
@@ -80,6 +81,8 @@ const testimonials = [
 ];
 
 const Testimonial = () => {
+    const testimonialSheet = useAutoFetch<any>("/Testimonial");
+
     const textRef = useRef(null);
     const subtextRef = useRef(null);
 
@@ -206,8 +209,14 @@ const Testimonial = () => {
             <div className="testimonial-grid grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-1">
                 {testimonials.map((testimonial, index) => (
                     <TestimonialCard
-                        title={testimonial.title}
-                        description={testimonial.description}
+                        title={
+                            testimonialSheet &&
+                            testimonialSheet[`card_title_${index + 1}`]
+                        }
+                        description={
+                            testimonialSheet &&
+                            testimonialSheet[`card_desc_${index + 1}`]
+                        }
                         reviewer={testimonial.reviewer}
                         reverse={testimonial.reverse}
                         light={testimonial.light}

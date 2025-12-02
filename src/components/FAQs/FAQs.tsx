@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { useAutoFetch } from "../../hooks/useAutoFetch";
 
 const faqs = [
     {
@@ -29,10 +30,15 @@ const faqs = [
 ];
 
 const FAQs = () => {
+    const faqsSheet = useAutoFetch<any>("/FAQs");
+
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section id="faqs" className="px-2 md:px-10 py-24 text-center bg-brand-dark-">
+        <section
+            id="faqs"
+            className="px-2 md:px-10 py-24 text-center bg-brand-dark-"
+        >
             {/* Section Header */}
             <p className="font-inter text-brand-slate text-sm mb-2 uppercase tracking-wide">
                 Trusted By
@@ -44,7 +50,7 @@ const FAQs = () => {
             {/* FAQ List */}
             <div className="flex flex-col md:flex-row gap-3 md:mx-20">
                 <div className="space-y-1 text-left md:w-3xl">
-                    {faqs.map((faq, index) => {
+                    {faqs.map((_, index) => {
                         const isOpen = openIndex === index;
                         return (
                             <div
@@ -60,7 +66,8 @@ const FAQs = () => {
                                     className="w-full flex justify-between gap-2 items-center px-6 text-left"
                                 >
                                     <h3 className="font-raleway text-base md:text-lg font-semibold text-brand-navy">
-                                        {faq.question}
+                                        {faqsSheet &&
+                                            faqsSheet[`faq_q_${index + 1}`]}
                                     </h3>
                                     <div className="flex items-center justify-center min-w-6 min-h-6 rounded-full text-emerald-900 bg-brand-light-lime">
                                         {isOpen ? (
@@ -78,7 +85,8 @@ const FAQs = () => {
                                     }`}
                                 >
                                     <p className="font-inter text-brand-navy/80 text-sm md:text-base leading-5">
-                                        {faq.answer}
+                                        {faqsSheet &&
+                                            faqsSheet[`faq_ans_${index + 1}`]}
                                     </p>
                                 </div>
                             </div>
@@ -88,19 +96,14 @@ const FAQs = () => {
                 <div className=" bg-brand-light-lime text-emerald-900 flex-1 rounded-lg p-4 flex flex-col justify-between">
                     <div>
                         <p className="text-3xl font-medium mb-5 font-raleway">
-                            Do You have more questions ?
+                            {faqsSheet && faqsSheet.side_card_title}
                         </p>
                         <p className="text-lg font-inter text-emerald-900/90 text-left leading-5.5">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Ducimus perspiciatis, accusantium voluptate
-                            explicabo ipsa animi saepe delectus laborum! Cumque,
-                            vero? explicabo ipsa animi saepe delectus laborum!
-                            Cumque, vero? explicabo ipsa animi saepe delectus
-                            laborum! Cumque, vero?
+                            {faqsSheet && faqsSheet.side_card_desc}
                         </p>
                     </div>
                     <button className="font-inter text-brand-light-lime w-full bg-emerald-900 px-10 py-2 rounded-lg font-medium mt-2">
-                        Shoot a Direct Mail
+                        {faqsSheet && faqsSheet.side_card_btn_text}
                     </button>
                 </div>
             </div>
