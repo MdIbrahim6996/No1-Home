@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef, useState } from "react";
-import { apiBaseUrl } from "../../utils/constants";
+import { useAutoFetch } from "../../hooks/useAutoFetch";
 
 gsap.registerPlugin(SplitText);
 
@@ -36,17 +36,7 @@ const Hero = () => {
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
 
-    const [data, setData] = useState("");
-
-    useEffect(() => {
-        const getData = async () => {
-            const res = await fetch(`${apiBaseUrl}/Hero`);
-            const json = await res.json();
-            setData(json);
-        };
-
-        getData();
-    }, []);
+    const hero = useAutoFetch<any>("/Hero");
 
     useGSAP(
         () => {
@@ -155,8 +145,7 @@ const Hero = () => {
                     ref={titleRef}
                     className="will-change-transform will-change-opacity font-raleway md:text-7xl text-5xl font-semibold text-brand-light-bg md:leading-18 leading-12"
                 >
-                    {/* @ts-ignore */}
-                    {data && data[0][`title_${index + 1}`]}
+                    {hero && hero[`title_${index + 1}`]}
                 </h1>
                 {/* 
                 <p
@@ -169,8 +158,7 @@ const Hero = () => {
                     ref={subtitleRef}
                     className="will-change-transform will-change-opacity mt-4 max-w-lg font-inter text-brand-lime text-base md:text-lg md:leading-5.5 leading-4.5"
                 >
-                    {/* @ts-ignore */}
-                    {data && data[0][`subtitle_${index + 1}`]}
+                    {hero && hero[`subtitle_${index + 1}`]}
                 </p>
             </div>
 

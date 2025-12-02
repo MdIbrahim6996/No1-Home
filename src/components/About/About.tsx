@@ -12,7 +12,6 @@ const AboutSection = () => {
     const textRef = useRef(null);
 
     const about = useAutoFetch<any>("/About");
-    console.log(about);
 
     useGSAP(() => {
         const text = SplitText.create(textRef.current, {
