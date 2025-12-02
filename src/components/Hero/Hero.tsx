@@ -19,7 +19,7 @@ const slides = [
         title: "Power Your Home With Clean Energy.",
         subtitle:
             "Cut energy bills, increase property value, and enjoy uninterrupted solar power with our expert installation and high-efficiency panels.",
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+        image: "/hero-prod.png",
     },
     {
         id: 2,
@@ -108,7 +108,7 @@ const Hero = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % slides.length);
-        }, 5000);
+        }, 8000);
 
         return () => clearInterval(interval);
     }, [index]);
@@ -117,13 +117,14 @@ const Hero = () => {
             id="home"
             className="relative overflow-hidden h-screen flex flex-col justify-end md:m-1.5 px-4 md:px-20 pb-20 md:rounded-lg"
         >
-            <picture>
+          
+            <picture className="h-screen w-full overflow-hidden absolute inset-0">
                 {/* <source srcSet="/hero-mobile.webp" media="(max-width: 768px)" /> */}
                 <img
                     // src="/hero-desktop.webp"
                     src={slides[index].image}
                     alt=""
-                    className="hero_image absolute inset-0 w-full h-full object-cover"
+                    className="hero_image w-full h-full object-cover"
                     loading="eager"
                     fetchPriority="high"
                 />

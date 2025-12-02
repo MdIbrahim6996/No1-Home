@@ -102,28 +102,28 @@ const AboutSection = () => {
 
             {/* RIGHT IMAGE GRID */}
             <div className="md:w-[55%] h-full  grid grid-cols-2 gap-2">
-                <div className="col-span-2 md:col-span-1 h-130 row-span-2 rounded-xl overflow-hidden">
+                <div className="col-span-2 md:col-span-1 h-147 row-span-2 rounded-xl overflow-hidden">
                     <img
                         // src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?fm=jpg&q=80&w=800"
-                        src="about-1.webp"
+                        src="hero-prod.png"
                         alt="Solar panels on home roof"
                         className="w-full h-full object-cover"
                     />
                 </div>
                 <div className="rounded-xl overflow-hidden h-70 md:h-full">
                     <img
-                        src="about-2.webp"
+                        src="/about1.jpeg"
                         // src="https://plus.unsplash.com/premium_photo-1682148196781-8bbcdfd7f537?fm=jpg&q=80&w=800"
                         alt="Solar technician installing panels"
                         className="w-full h-full object-cover"
                     />
                 </div>
-                <div className="rounded-xl overflow-hidden">
+                <div className="rounded-xl overflow-hidden h-70 md:h-full">
                     <img
-                        src="about-3.webp"
+                        src="/about2.jpeg"
                         // src="https://images.unsplash.com/photo-1691421740425-48ff22b6d442?fm=jpg&q=80&w=800"
                         alt="Modern solar setup on building"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover scale-111"
                     />
                 </div>
             </div>
