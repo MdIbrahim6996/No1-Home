@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef, useState } from "react";
+import { apiBaseUrl } from "../../utils/constants";
 
 gsap.registerPlugin(SplitText);
 
@@ -34,62 +35,19 @@ const Hero = () => {
 
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
-    // useGSAP(() => {
-    //     const titleText = SplitText.create(titleRef.current, {
-    //         type: "lines",
-    //         mask: "lines",
-    //         linesClass: "split-line",
-    //     });
-    //     const subtitleText = SplitText.create(subtitleRef.current, {
-    //         type: "lines",
-    //         mask: "lines",
-    //         linesClass: "split-line",
-    //     });
 
-    //     gsap.fromTo(
-    //         titleText.lines,
-    //         {
-    //             y: "100%",
-    //         },
-    //         {
-    //             y: "0%",
-    //             stagger: 0.3,
-    //             duration: 0.8,
-    //             delay: 0.5,
-    //         }
-    //     );
-    //     gsap.fromTo(
-    //         subtitleText.lines,
-    //         {
-    //             y: "100%",
-    //         },
-    //         {
-    //             y: "0%",
-    //             stagger: 0.1,
-    //             duration: 0.7,
-    //             delay: 1.25,
-    //         }
-    //     );
+    const [data, setData] = useState("");
 
-    //     gsap.from("#hero .hero_image", {
-    //         opacity: 0,
-    //         scale: 1.1,
-    //         duration: 1.5,
-    //         ease: "power3.out",
-    //     });
+    useEffect(() => {
+        const getData = async () => {
+            const res = await fetch(`${apiBaseUrl}/Hero`);
+            const json = await res.json();
+            setData(json);
+        };
 
-    //     return () => {
-    //         titleText.revert();
-    //         subtitleText.revert();
-    //         gsap.killTweensOf("#hero .hero_image");
-    //         gsap.killTweensOf(titleText.lines);
-    //         gsap.killTweensOf(subtitleText.lines);
-    //     };
-    // }, [index]);
+        getData();
+    }, []);
 
-    // 🔥 Animate header & subheader whenever index changes
-
-    // 🔁 Auto slide
     useGSAP(
         () => {
             if (!titleRef.current || !subtitleRef.current) return;
@@ -197,14 +155,22 @@ const Hero = () => {
                     ref={titleRef}
                     className="will-change-transform will-change-opacity font-raleway md:text-7xl text-5xl font-semibold text-brand-light-bg md:leading-18 leading-12"
                 >
-                    {slides[index].title}
+                    {/* @ts-ignore */}
+                    {data && data[0][`title_${index + 1}`]}
                 </h1>
-
+                {/* 
                 <p
                     ref={subtitleRef}
                     className="will-change-transform will-change-opacity mt-4 max-w-lg font-inter text-brand-lime text-base md:text-lg md:leading-5.5 leading-4.5"
                 >
                     {slides[index].subtitle}
+                </p> */}
+                <p
+                    ref={subtitleRef}
+                    className="will-change-transform will-change-opacity mt-4 max-w-lg font-inter text-brand-lime text-base md:text-lg md:leading-5.5 leading-4.5"
+                >
+                    {/* @ts-ignore */}
+                    {data && data[0][`subtitle_${index + 1}`]}
                 </p>
             </div>
 

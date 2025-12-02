@@ -4,11 +4,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
+import { useAutoFetch } from "../../hooks/useAutoFetch";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const AboutSection = () => {
     const textRef = useRef(null);
+
+    const about = useAutoFetch<any>("/About");
+    console.log(about);
 
     useGSAP(() => {
         const text = SplitText.create(textRef.current, {
@@ -42,7 +46,7 @@ const AboutSection = () => {
                     About us
                 </button>
 
-                <h2
+                {/* <h2
                     // ref={textRef}
                     className="font-raleway tracking-tight text-4xl text-brand-midnight/80 leading-10 mt-6 md:mb-40 mb-20"
                 >
@@ -79,6 +83,12 @@ const AboutSection = () => {
                         savings
                     </span>{" "}
                     for every home.
+                </h2> */}
+                <h2
+                    // ref={textRef}
+                    className="font-raleway tracking-tight text-4xl text-brand-midnight leading-10 mt-6 md:mb-40 mb-20"
+                >
+                    {about?.title}
                 </h2>
 
                 <div className="flex items-center h-full text-brand-deep-navy">

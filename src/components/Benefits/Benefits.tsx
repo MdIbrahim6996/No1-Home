@@ -8,6 +8,7 @@ import { useRef } from "react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 import BeforeAfterSlider from "../ImageSlider";
+import { useAutoFetch } from "../../hooks/useAutoFetch";
 
 const BenefitCard = ({
     index,
@@ -42,36 +43,38 @@ const BenefitCard = ({
     );
 };
 
-const benefits = [
-    {
-        title: "Pay Less on Energy Bills",
-        desc: "Reduce your monthly electricity costs by generating your own clean, renewable power directly from sunlight.",
-        img: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?fm=jpg&q=80&w=800", // solar roof
-    },
-    {
-        title: "Protect Against Rising Energy Rates",
-        desc: "Lock in predictable energy costs and safeguard your household budget from fluctuating utility prices.",
-        img: "https://plus.unsplash.com/premium_photo-1682148196781-8bbcdfd7f537?fm=jpg&q=80&w=800", // technician
-    },
-    {
-        title: "Increase Your Home’s Value",
-        desc: "Homes with solar PV systems are more attractive to buyers and often command higher resale prices.",
-        img: "https://images.unsplash.com/photo-1691421740425-48ff22b6d442?fm=jpg&q=80&w=800", // modern house
-    },
-    {
-        title: "Be Part of Clean Energy Efforts",
-        desc: "Every panel installed helps reduce carbon emissions, contributing to a sustainable future for all.",
-        img: "https://images.unsplash.com/photo-1630608354129-6a7704150401?fm=jpg&q=80&w=800", // nature + panels
-    },
-    {
-        title: "Maximize Your Return on Investment",
-        desc: "With today’s energy costs, most systems pay for themselves within 5–7 years while providing decades of savings.",
-        img: "https://images.unsplash.com/photo-1655300256335-beef51a914fe?fm=jpg&q=80&w=800", // panels perspective
-    },
-];
+// const benefits = [
+//     {
+//         title: "Pay Less on Energy Bills",
+//         desc: "Reduce your monthly electricity costs by generating your own clean, renewable power directly from sunlight.",
+//         img: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?fm=jpg&q=80&w=800", // solar roof
+//     },
+//     {
+//         title: "Protect Against Rising Energy Rates",
+//         desc: "Lock in predictable energy costs and safeguard your household budget from fluctuating utility prices.",
+//         img: "https://plus.unsplash.com/premium_photo-1682148196781-8bbcdfd7f537?fm=jpg&q=80&w=800", // technician
+//     },
+//     {
+//         title: "Increase Your Home’s Value",
+//         desc: "Homes with solar PV systems are more attractive to buyers and often command higher resale prices.",
+//         img: "https://images.unsplash.com/photo-1691421740425-48ff22b6d442?fm=jpg&q=80&w=800", // modern house
+//     },
+//     {
+//         title: "Be Part of Clean Energy Efforts",
+//         desc: "Every panel installed helps reduce carbon emissions, contributing to a sustainable future for all.",
+//         img: "https://images.unsplash.com/photo-1630608354129-6a7704150401?fm=jpg&q=80&w=800", // nature + panels
+//     },
+//     {
+//         title: "Maximize Your Return on Investment",
+//         desc: "With today’s energy costs, most systems pay for themselves within 5–7 years while providing decades of savings.",
+//         img: "https://images.unsplash.com/photo-1655300256335-beef51a914fe?fm=jpg&q=80&w=800", // panels perspective
+//     },
+// ];
 const Benefits = () => {
     const textRef = useRef(null);
     const subtextRef = useRef(null);
+
+    const benefits = useAutoFetch<any>("/Benefit");
 
     useGSAP(async () => {
         // Wait until all custom fonts are loaded
@@ -145,17 +148,13 @@ const Benefits = () => {
                     ref={textRef}
                     className="font-raleway md:text-5xl text-3xl font-semibold text-brand-light-bg"
                 >
-                    Why Solar PV is the Smart Investment for Your Home and the
-                    Planet.
+                    {benefits?.header}
                 </h2>
                 <p
                     ref={subtextRef}
                     className="font-inter ml-auto w-[90%] text-brand-light-bg/90 max-w-md md:pt-24 pt-5 md:mt-0 text-base leading-5.5"
                 >
-                    At No1 Home Solar, we believe in helping every household
-                    achieve long-term savings and energy independence. Discover
-                    the benefits that make solar PV the smartest choice for
-                    modern homeowners.
+                    {benefits?.subheader}
                 </p>
             </div>
             {/* <div className="md:flex gap-2 items-start mb-24">
@@ -181,14 +180,14 @@ const Benefits = () => {
                 <div className="flex flex-col gap-2">
                     <BenefitCard
                         index={1}
-                        title={benefits[0].title}
-                        desc={benefits[0].desc}
+                        title={benefits?.card_title_1}
+                        desc={benefits?.card_desc_1}
                         icon={MdOutlineEnergySavingsLeaf}
                     />
                     <BenefitCard
                         index={2}
-                        title={benefits[1].title}
-                        desc={benefits[1].desc}
+                        title={benefits?.card_title_2}
+                        desc={benefits?.card_desc_2}
                         icon={FaMoneyBillTrendUp}
                     />
                 </div>
@@ -201,14 +200,14 @@ const Benefits = () => {
                 <div className="flex flex-col gap-2">
                     <BenefitCard
                         index={3}
-                        title={benefits[2].title}
-                        desc={benefits[2].desc}
+                        title={benefits?.card_title_3}
+                        desc={benefits?.card_desc_3}
                         icon={FaMoneyBillWheat}
                     />
                     <BenefitCard
                         index={4}
-                        title={benefits[3].title}
-                        desc={benefits[3].desc}
+                        title={benefits?.card_title_4}
+                        desc={benefits?.card_desc_4}
                         icon={PiPlant}
                     />
                 </div>
