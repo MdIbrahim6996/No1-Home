@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from "react";
 import TestimonialCard from "../TestimonialCard/TestimonialCard";
-import { useAutoFetch } from "../../hooks/useAutoFetch";
+// import { useAutoFetch } from "../../hooks/useAutoFetch";
 
 const testimonials = [
     {
@@ -13,7 +13,7 @@ const testimonials = [
         description:
             "The team explained everything clearly and helped me choose the perfect 5kW system. My electricity bill dropped from £35 to almost £20 monthly!",
         reviewer: {
-            name: "Rahul Mehta",
+            name: "Charlotte Reed",
             role: "Homeowner",
             image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
         },
@@ -25,7 +25,7 @@ const testimonials = [
         description:
             "They handled my subsidy paperwork and installation very smoothly. Solar production is even better than I expected.",
         reviewer: {
-            name: "Priya Nair",
+            name: "Sophie Harris",
             role: "Customer",
             image: "https://images.pexels.com/photos/943084/pexels-photo-943084.jpeg",
         },
@@ -37,7 +37,7 @@ const testimonials = [
         description:
             "Wiring, structure, and inverter setup were extremely clean. The mobile monitoring app is super useful.",
         reviewer: {
-            name: "Arjun Patel",
+            name: "James Walker",
             role: "Residential Client",
             image: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg",
         },
@@ -49,7 +49,7 @@ const testimonials = [
         description:
             "They surveyed my rooftop properly and gave a transparent cost breakdown. Savings are clearly visible month after month.",
         reviewer: {
-            name: "Sneha Kulkarni",
+            name: "Emily Carter",
             role: "Customer",
             image: "https://images.pexels.com/photos/413959/pexels-photo-413959.jpeg",
         },
@@ -61,7 +61,7 @@ const testimonials = [
         description:
             "Their team fixed a minor inverter setting issue the same day. Truly dependable service.",
         reviewer: {
-            name: "Vikram Singh",
+            name: "Isabella Turner",
             role: "Homeowner",
             image: "https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg",
         },
@@ -73,7 +73,7 @@ const testimonials = [
         description:
             "Compared many providers but they offered the best value. Solar production is consistent even on cloudy days.",
         reviewer: {
-            name: "Aisha Khan",
+            name: "Amelia Brooks",
             role: "Customer",
             image: "https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg",
         },
@@ -81,7 +81,7 @@ const testimonials = [
 ];
 
 const Testimonial = () => {
-    const testimonialSheet = useAutoFetch<any>("/Testimonial");
+    // const testimonialSheet = useAutoFetch<any>("/Testimonial");
 
     const textRef = useRef(null);
     const subtextRef = useRef(null);
@@ -209,14 +209,8 @@ const Testimonial = () => {
             <div className="testimonial-grid grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-1">
                 {testimonials.map((testimonial, index) => (
                     <TestimonialCard
-                        title={
-                            testimonialSheet &&
-                            testimonialSheet[`card_title_${index + 1}`]
-                        }
-                        description={
-                            testimonialSheet &&
-                            testimonialSheet[`card_desc_${index + 1}`]
-                        }
+                        title={testimonial.title}
+                        description={testimonial.description}
                         reviewer={testimonial.reviewer}
                         reverse={testimonial.reverse}
                         light={testimonial.light}

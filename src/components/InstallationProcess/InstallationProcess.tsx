@@ -3,44 +3,63 @@ import InstallationCard from "../InstallationCard/InstallationCard";
 import { useRef } from "react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
-import { useAutoFetch } from "../../hooks/useAutoFetch";
+// import { useAutoFetch } from "../../hooks/useAutoFetch";
 
 const installationSteps = [
     {
         id: 1,
-        title: "Initial Consultation & Site Survey",
-        description:
-            "Our process begins with a detailed home assessment by one of our experienced surveyors. We evaluate your property’s roof direction, structure, and shading to ensure you get the most efficient solar setup possible.",
+        title: "Annual Solar Maintenance Visit",
+        subtitle:
+            "Every plan starts with a professional solar maintenance session.",
+        essential: "Annual panel cleaning.",
+        standard: "Cleaning + full electrical safety test.",
+        premium:
+            "Cleaning + safety test + advanced diagnostics in one complete service.",
     },
     {
         id: 2,
-        title: "Tailored System Design",
-        description:
-            "After the survey, our technical team creates a bespoke solar system plan designed specifically for your home. This includes panel placement, inverter positioning, and estimated energy savings — so you know exactly what to expect before we start.",
+        title: "System Inspection & Diagnostic Checks",
+        subtitle:
+            "We inspect your solar system for health, safety and performance.",
+        essential: "Virtual system inspection.",
+        standard: "Detailed inverter diagnostics.",
+        premium: "Full diagnostics + thermal imaging + deep system testing.",
     },
     {
         id: 3,
-        title: "Quotation & Approval",
-        description:
-            "Once your design is finalized, we provide a transparent, all-inclusive quotation. There are no hidden charges or surprise add-ons — just clear, honest pricing and professional guidance every step of the way.",
+        title: "Inverter & Output Performance Review",
+        subtitle:
+            "Your inverter is checked and your system output is analysed.",
+        essential: "Basic inverter check.",
+        standard: "Advanced inverter diagnostics + performance guarantee.",
+        premium: "Full inverter optimisation + annual efficiency tuning.",
     },
     {
         id: 4,
-        title: "Professional Installation",
-        description:
-            "Our certified installation engineers handle every aspect of setup — from panel mounting and electrical connections to inverter configuration. All work complies with UK safety standards and is completed with precision and care.",
+        title: "Call-Outs & Support Access",
+        subtitle: "Need help? Your response speed depends on your plan.",
+        essential: "Standard support.",
+        standard: "Priority call-out response.",
+        premium: "Unlimited call-outs included (no extra fees).",
     },
     {
         id: 5,
-        title: "System Testing & Commissioning",
-        description:
-            "Before we leave, our team conducts a complete performance test to make sure your system is running perfectly. Once everything is checked and approved, your solar PV system is activated and begins producing clean energy immediately.",
+        title: "Reporting & Monitoring",
+        subtitle:
+            "Every visit ends with a clear summary of your system’s condition.",
+        essential: "Basic output report.",
+        standard: "Full technician photo report.",
+        premium:
+            "Full report + remote monitoring setup + battery health check.",
     },
     {
         id: 6,
-        title: "Handover & Aftercare",
-        description:
-            "After installation, we provide a full handover pack with all warranties, documentation, and maintenance guidance. Our support team remains available for future assistance, performance checks, and annual servicing to keep your system at peak efficiency.",
+        title: "Protection, Guarantees & Annual Review",
+        subtitle: "We keep your system safe and efficient long-term.",
+        essential: "Annual report reminder.",
+        standard: "System performance guarantee.",
+        premium:
+            "Parts & labour warranty (up to £X/yr) + extended lifetime guarantee.",
     },
 ];
 
@@ -48,7 +67,7 @@ const InstallationProcess = () => {
     const textRef = useRef(null);
     const subtextRef = useRef(null);
 
-    const install = useAutoFetch<any>("/InstallationProcess");
+    // const install = useAutoFetch<any>("/InstallationProcess");
 
     useGSAP(() => {
         const text = SplitText.create(textRef.current, {
@@ -125,22 +144,29 @@ const InstallationProcess = () => {
                         ref={textRef}
                         className="font-raleway md:text-5xl text-3xl font-semibold "
                     >
-                        {install?.header}
+                        How Our Maintenance Plan Works
                     </h2>
                     <p
                         ref={subtextRef}
                         className="font-inter ml-auto w-[90%] text-brand-light-bg/90 max-w-md md:pt-24 pt-5 md:mt-0 text-base leading-5.5"
                     >
-                        {install?.subheader}
+                        Our dedicated team of engineers offer end-to-end solar
+                        maintenance care and solutions to meet your needs. This
+                        is what the process looks like, once you’ve booked a
+                        plan
                     </p>
                 </div>
 
                 <div className="install-grid grid md:grid-cols-3 md:gap-3 gap-2 h-full">
-                    {installationSteps.map((item, i) => (
+                    {installationSteps.map((item) => (
                         <InstallationCard
+                            key={item.id}
                             itemNo={item.id}
-                            title={install?.[`card_title_${i + 1}`]}
-                            desc={install?.[`card_desc_${i + 1}`]}
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            essential={item.essential}
+                            standard={item.standard}
+                            premium={item.premium}
                         />
                     ))}
                 </div>
