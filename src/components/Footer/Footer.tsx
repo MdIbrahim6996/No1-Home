@@ -2,7 +2,7 @@ import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className="relative bg-slate-100 overflow-hidden text-brand-midnight md:pt-35 pt-12 pb text-center md:text-left">
+        <footer className="relative bg-slate-100 overflow-hidden text-brand-midnight md:pt-44 pt-12 pb text-center md:text-left">
             {/* Background circle accent */}
             <div className="absolute inset-0 flex justify-center items-center opacity">
                 <div className="md:w-[600px] w-[500px] md:h-[600px] h-[500px] bg-brand-lime opacity-15 rounded-full"></div>
