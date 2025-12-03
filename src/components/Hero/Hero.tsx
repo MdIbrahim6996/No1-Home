@@ -34,6 +34,7 @@ const slides = [
 
 const Hero = () => {
     const [index, setIndex] = useState<number>(0);
+    const [calcOpen, setCalcOpen] = useState(false);
 
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
@@ -164,6 +165,21 @@ const Hero = () => {
                 </p>
             </div>
 
+            <div className="absolute md:hidden -right-18 top-40 rotate-90 gap-2 w-fit">
+                <button
+                    onClick={() => setCalcOpen(true)}
+                    className="bg-brand-lime text-sm text-brand-deep-navy px-6 rounded-b-md py-1 
+                font-semibold font-spaceGrotesk"
+                >
+                    Calculate Savings
+                </button>
+            </div>
+
+            {calcOpen && (
+                <div className="absolute md:hidden top-0 left-0 z-100">
+                    <Calculator handleClose={() => setCalcOpen(false)} />
+                </div>
+            )}
             <div className="absolute hidden md:block right-4 top-20 gap-2 w-fit">
                 <Calculator />
             </div>

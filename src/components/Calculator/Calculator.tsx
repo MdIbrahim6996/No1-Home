@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-export default function Calculator() {
+export default function Calculator({
+    handleClose,
+}: {
+    handleClose?: () => void;
+}) {
     const [size, setSize] = useState(4);
     const [showAdvanced, setShowAdvanced] = useState(false);
     const [price, setPrice] = useState(0.3);
@@ -22,7 +26,16 @@ export default function Calculator() {
     const saving = extra * price;
 
     return (
-        <div className="scrollbar-hide w-132 border h-120 overflow-y-scroll bg-brand-charcoal/20 backdrop-blur-md border-black/10 rounded-md p-6 shadow-xl font-spaceGrotesk">
+        <div
+            className="scrollbar-hide relative md:w-132 max-w-screen border md:h-120 h-screen
+         overflow-y-scroll bg-brand-charcoal/20 backdrop-blur-md border-black/10 rounded-md p-6 shadow-xl font-spaceGrotesk"
+        >
+            <button
+                onClick={handleClose}
+                className="md:hidden bg-brand-lime w-fit p-1 px-6 rounded-full mb-5 font-semibold text-brand-deep-navy"
+            >
+                Close X
+            </button>
             <h2 className="text-xl font-semibold text-brand-lime mb-1 leading-5">
                 How much could maintenance save you each year?
             </h2>

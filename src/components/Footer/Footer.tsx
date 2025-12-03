@@ -24,9 +24,9 @@ const Footer = () => {
             </div> */}
 
             {/* Footer Links Grid */}
-            <div className="relative z-10 grid md:grid-cols-12 gap-8 pt-10 md:px-16 px-4">
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 pt-10 md:px-16 px-4">
                 {/* Navigation */}
-                <div className="col-span-9">
+                <div className="md:col-span-9">
                     <h4 className="font-inter border-b font-semibold uppercase tracking-wide mb-4">
                         Navigation
                     </h4>
@@ -75,7 +75,7 @@ const Footer = () => {
                 </div>
 
                 {/* Socials */}
-                <div className="col-span-3">
+                <div className="md:col-span-3">
                     <h4 className="font-inter border-b font-semibold uppercase tracking-wide mb-4">
                         Socials
                     </h4>
@@ -165,7 +165,7 @@ const Footer = () => {
             </div>
             <div
                 className="bg-brand-lime text-brand-deep-navy relative z-10 mt-5 text-center
-             text-xl font-spaceGrotesk font-medium py-2"
+             md:text-xl font-spaceGrotesk font-medium py-2"
             >
                 <p>
                     This site is built by{" "}

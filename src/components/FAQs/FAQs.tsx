@@ -104,7 +104,7 @@ const FAQs = () => {
                         <p className="text-3xl font-medium mb-5 font-raleway">
                             {faqsSheet && faqsSheet.side_card_title}
                         </p>
-                        <p className="text-lg font-inter text-emerald-900/90 text-left leading-5.5">
+                        <p className="md:text-lg font-inter text-emerald-900/90 text-left md:leading-5.5 leading-5">
                             {faqsSheet && faqsSheet.side_card_desc}
                         </p>
                     </div>
