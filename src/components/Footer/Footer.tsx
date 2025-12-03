@@ -2,26 +2,31 @@ import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className="relative bg-slate-100 text-brand-midnight md:pt-24 pt-12 pb-12 px-4 md:px-16 text-center md:text-left">
+        <footer className="relative bg-slate-100 overflow-hidden text-brand-midnight md:pt-35 pt-12 pb text-center md:text-left">
             {/* Background circle accent */}
-            <div className="absolute inset-0 flex justify-center items-center opacity-15">
-                <div className="md:w-[600px] w-[500px] md:h-[600px] h-[500px] bg-brand-lime rounded-full blur-3x"></div>
+            <div className="absolute inset-0 flex justify-center items-center opacity">
+                <div className="md:w-[600px] w-[500px] md:h-[600px] h-[500px] bg-brand-lime opacity-15 rounded-full"></div>
+                <img
+                    src="/solarcare-logo.svg"
+                    alt=""
+                    className="absolute left-1/2 top-1/2 -translate-1/2 -translate-y-[49%]  w-120 h-120 opacity-50"
+                />
             </div>
 
             {/* Main Headline */}
-            <div className="relative z-10 text-center mb-20">
+            {/* <div className="relative z-10 text-center mb-20">
                 <p className="font-inter text-sm mb-2 tracking-wide">
                     Got a project? Let’s collaborate.
                 </p>
                 <h2 className="font-raleway md:text-8xl text-6xl font-bold uppercase tracking-tight">
                     GET IN TOUCH
                 </h2>
-            </div>
+            </div> */}
 
             {/* Footer Links Grid */}
-            <div className="relative z-10 grid md:grid-cols-12 gap-8 pt-10">
+            <div className="relative z-10 grid md:grid-cols-12 gap-8 pt-10 md:px-16 px-4">
                 {/* Navigation */}
-                <div className="col-span-6">
+                <div className="col-span-9">
                     <h4 className="font-inter border-b font-semibold uppercase tracking-wide mb-4">
                         Navigation
                     </h4>
@@ -111,7 +116,7 @@ const Footer = () => {
                 </div>
 
                 {/* Resources */}
-                <div className="col-span-3">
+                {/* <div className="col-span-3">
                     <h4 className="font-inter border-b font-semibold uppercase tracking-wide mb-4">
                         Resources
                     </h4>
@@ -141,13 +146,13 @@ const Footer = () => {
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> */}
             </div>
 
             {/* Footer Bottom */}
-            <div className="relative z-10 mt-16 flex flex-col md:flex-row justify-between items-center gap-4 text-[--color-brand-slate] font-inter text-xs border-t border-emerald-800 pt-6">
-                <p className="font-bold text-6xl font-inter">
-                    © {new Date().getFullYear()} <br /> No1 Home
+            <div className="relative z-10 mt-16 md:px-16 px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-[--color-brand-slate] font-inter text-xs border-t border-emerald-800 pt-6">
+                <p className="font-bold text-xl font-inter text-center">
+                    © {new Date().getFullYear()} No1 Solar Care
                 </p>
                 {/* <p>Built by Ibrahim • All rights reserved.</p> */}
 
@@ -157,6 +162,17 @@ const Footer = () => {
                 >
                     <ArrowUp size={20} />
                 </a>
+            </div>
+            <div
+                className="bg-brand-lime text-brand-deep-navy relative z-10 mt-5 text-center
+             text-xl font-spaceGrotesk font-medium py-2"
+            >
+                <p>
+                    This site is built by{" "}
+                    <a href="https://www.firstwebstudio.com/" target="_blank" className="underline font-semibold ml-3">
+                        First Web Studio
+                    </a>
+                </p>
             </div>
         </footer>
     );
