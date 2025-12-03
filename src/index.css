@@ -26,6 +26,23 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari, Edge */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+    scrollbar-width: none;
+}
+
 @theme {
     --font-montserrat: "Montserrat", sans-serif;
     --font-spaceGrotesk: "Space Grotesk", sans-serif;

@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef, useState } from "react";
 import { useAutoFetch } from "../../hooks/useAutoFetch";
+import Calculator from "../Calculator/Calculator";
 
 gsap.registerPlugin(SplitText);
 
@@ -109,14 +110,14 @@ const Hero = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % slides.length);
-        }, 8000);
+        }, 3000);
 
         return () => clearInterval(interval);
     }, [index]);
     return (
         <section
             id="home"
-            className="relative overflow-hidden h-screen flex flex-col justify-end md:m-1.5 px-4 md:px-20 pb-20 md:rounded-lg"
+            className="relative overflow-hidden h-screen flex flex-col justify-end md:m-1.5 px-4 md:px-10 pb-20 md:rounded-lg"
         >
             <picture className="h-screen w-full overflow-hidden absolute inset-0">
                 {/* <source srcSet="/hero-mobile.webp" media="(max-width: 768px)" /> */}
@@ -163,8 +164,11 @@ const Hero = () => {
                 </p>
             </div>
 
+            <div className="absolute hidden md:block right-4 top-20 gap-2 w-fit">
+                <Calculator />
+            </div>
             {/* Bottom Grid */}
-            <div className="absolute hidden md:grid right-20 bottom-10 grid-cols-3 gap-2 w-fit ">
+            {/* <div className="absolute hidden md:grid right-4 bottom-3 grid-cols-3 gap-2 w-fit ">
                 {slides.map((slide, i) => (
                     <div
                         className={`h-20 w-20 rounded-md overflow-hidden ${
@@ -179,7 +183,7 @@ const Hero = () => {
                         />
                     </div>
                 ))}
-            </div>
+            </div> */}
             <div className="absolute grid md:hidden right-5 bottom-5 grid-cols-3 gap-0.5 w-fit ">
                 {slides.map((slide, i) => (
                     <div
