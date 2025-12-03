@@ -35,20 +35,26 @@ const FAQs = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
+        // <section
+        //     id="faqs"
+        //     className="px-2 md:px- py-24 text-center"
+        // >
         <section
             id="faqs"
-            className="px-2 md:px-10 py-24 text-center bg-brand-dark-"
+            className="max-w-7xl mx-auto px-2 md:px-12 py-20 my-20"
         >
             {/* Section Header */}
-            <p className="font-inter text-brand-slate text-sm mb-2 uppercase tracking-wide">
-                Trusted By
-            </p>
-            <h2 className="font-raleway text-[clamp(2rem,4vw,2.8rem)] font-semibold text-brand-deep-navy mb-12 leading-tight">
-                Any Questions. We Got You.
-            </h2>
+            <div className="text-center">
+                <p className="font-inter text-brand-slate text-sm mb-2 uppercase tracking-wide">
+                    Trusted By
+                </p>
+                <h2 className="font-raleway md:text-5xl text-3xl font-semibold text-brand-deep-navy mb-12 leading-tight">
+                    Any Questions. We Got You.
+                </h2>
+            </div>
 
             {/* FAQ List */}
-            <div className="flex flex-col md:flex-row gap-3 md:mx-20">
+            <div className="flex flex-col md:flex-row gap-3 md:mx-">
                 <div className="space-y-1 text-left md:w-3xl">
                     {faqs.map((_, index) => {
                         const isOpen = openIndex === index;
