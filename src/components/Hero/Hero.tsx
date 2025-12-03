@@ -9,18 +9,19 @@ gsap.registerPlugin(SplitText);
 const slides = [
     {
         id: 0,
-        title: "Harness Your Home’s Natural Sunlight.",
-        subtitle:
-            "At No1 Home Solar, we help homeowners unlock their property’s natural energy potential. Save money, reduce your carbon footprint, and power your home sustainably with premium solar systems.",
-        image: "/hero-desktop.webp",
-    },
-    {
-        id: 1,
         title: "Power Your Home With Clean Energy.",
         subtitle:
             "Cut energy bills, increase property value, and enjoy uninterrupted solar power with our expert installation and high-efficiency panels.",
         image: "/hero-prod.png",
     },
+    {
+        id: 1,
+        title: "Harness Your Home’s Natural Sunlight.",
+        subtitle:
+            "At No1 Home Solar, we help homeowners unlock their property’s natural energy potential. Save money, reduce your carbon footprint, and power your home sustainably with premium solar systems.",
+        image: "/hero-desktop.webp",
+    },
+
     {
         id: 2,
         title: "Switch to Solar. Save More Every Month.",
@@ -117,7 +118,6 @@ const Hero = () => {
             id="home"
             className="relative overflow-hidden h-screen flex flex-col justify-end md:m-1.5 px-4 md:px-20 pb-20 md:rounded-lg"
         >
-          
             <picture className="h-screen w-full overflow-hidden absolute inset-0">
                 {/* <source srcSet="/hero-mobile.webp" media="(max-width: 768px)" /> */}
                 <img
