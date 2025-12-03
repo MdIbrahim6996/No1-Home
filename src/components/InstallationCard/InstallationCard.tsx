@@ -15,6 +15,12 @@ const InstallationCard = ({
     standard: string;
     premium: string;
 }) => {
+    const scrollToSection = () => {
+        const el = document.getElementById("pricing");
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+        }
+    };
     return (
         <div
             className="card text-brand-light-bg font-inter text-lg px-5 w-full py-2
@@ -36,19 +42,28 @@ const InstallationCard = ({
                 </p>
 
                 <div className="my-5 space-y-1">
-                    <p className="flex  gap-2 font-raleway font-medium leading-5 text-brand-light-bg/80 md:text-base">
+                    <p
+                        onClick={() => scrollToSection()}
+                        className="flex  gap-2 font-raleway font-medium leading-5 text-brand-light-bg/80 md:text-base"
+                    >
                         <span className="font-semibold text-brand-lime cursor-pointer hover:underline">
                             Essential:
                         </span>
                         <span>{essential}</span>
                     </p>
-                    <p className="flex  gap-2 font-raleway font-medium leading-5 text-brand-light-bg/80 md:text-base">
+                    <p
+                        onClick={() => scrollToSection()}
+                        className="flex  gap-2 font-raleway font-medium leading-5 text-brand-light-bg/80 md:text-base"
+                    >
                         <span className="font-semibold text-brand-lime cursor-pointer hover:underline">
                             Standard:
                         </span>
                         <span>{standard}</span>
                     </p>
-                    <p className="flex  gap-2 font-raleway font-medium leading-5 text-brand-light-bg/80 md:text-base">
+                    <p
+                        onClick={() => scrollToSection()}
+                        className="flex  gap-2 font-raleway font-medium leading-5 text-brand-light-bg/80 md:text-base"
+                    >
                         <span className="font-semibold text-brand-lime cursor-pointer hover:underline">
                             Premium:
                         </span>
