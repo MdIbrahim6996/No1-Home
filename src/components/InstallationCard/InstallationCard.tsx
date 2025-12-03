@@ -1,6 +1,7 @@
 const InstallationCard = ({
     itemNo,
     title,
+    reftext,
     subtitle,
     essential,
     standard,
@@ -8,6 +9,7 @@ const InstallationCard = ({
 }: {
     itemNo: number;
     title: string;
+    reftext: string | undefined;
     subtitle: string;
     essential: string;
     standard: string;
@@ -28,9 +30,13 @@ const InstallationCard = ({
                 <p className="font-raleway font-medium leading-5 mt-1 text-brand-light-lime/80 md:text-base">
                     {subtitle}
                 </p>
-                <p className="border-b border-brand-lime w-fit font-raleway font-medium leading-5 mt-8 text-brand-light-bg/80 md:text-base">
-                    What’s included in this plan:
-                </p>
+                {itemNo !== 4 ? (
+                    <p className="border-b border-brand-lime w-fit font-raleway font-medium leading-5 mt-8 text-brand-light-bg/80 md:text-base">
+                        {reftext ? reftext : "What’s included in this plan:"}
+                    </p>
+                ) : (
+                    <></>
+                )}
                 <div className="my-5 space-y-1">
                     <p className="flex  gap-2 font-raleway font-medium leading-5 text-brand-light-bg/80 md:text-base">
                         <span className="font-semibold text-brand-lime">

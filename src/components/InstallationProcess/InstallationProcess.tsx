@@ -19,6 +19,7 @@ const installationSteps = [
     {
         id: 2,
         title: "System Inspection & Diagnostic Checks",
+        reftext: "By Plan:",
         subtitle:
             "We inspect your solar system for health, safety and performance.",
         essential: "Virtual system inspection.",
@@ -28,6 +29,7 @@ const installationSteps = [
     {
         id: 3,
         title: "Inverter & Output Performance Review",
+        reftext: "By Plan:",
         subtitle:
             "Your inverter is checked and your system output is analysed.",
         essential: "Basic inverter check.",
@@ -37,6 +39,7 @@ const installationSteps = [
     {
         id: 4,
         title: "Call-Outs & Support Access",
+        reftext: "By Plan:",
         subtitle: "Need help? Your response speed depends on your plan.",
         essential: "Standard support.",
         standard: "Priority call-out response.",
@@ -45,6 +48,7 @@ const installationSteps = [
     {
         id: 5,
         title: "Reporting & Monitoring",
+        reftext: "By Plan:",
         subtitle:
             "Every visit ends with a clear summary of your system’s condition.",
         essential: "Basic output report.",
@@ -55,6 +59,7 @@ const installationSteps = [
     {
         id: 6,
         title: "Protection, Guarantees & Annual Review",
+        reftext: "By Plan:",
         subtitle: "We keep your system safe and efficient long-term.",
         essential: "Annual report reminder.",
         standard: "System performance guarantee.",
@@ -163,6 +168,7 @@ const InstallationProcess = () => {
                             key={item.id}
                             itemNo={item.id}
                             title={item.title}
+                            reftext={item.reftext}
                             subtitle={item.subtitle}
                             essential={item.essential}
                             standard={item.standard}
