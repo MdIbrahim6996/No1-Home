@@ -67,7 +67,8 @@ const ROI = () => {
     return (
         <section
             id="roi"
-            className="roi relative overflow-hidden px-4 py-40 bg-brand-midnigh bg-[url('/returnOn.jpg')] bg-linear-to-b from-black to-black/50 bg-cover md:m-2 md:rounded-lg"
+            className="roi relative overflow-hidden px-4 py-40 bg-brand-midnigh bg-[url('/returnOn.jpg')] 
+            bg-linear-to-b from-black to-black/50 bg-cover md:m-2 md:rounded-lg"
         >
             {/* Accent Marker */}
             <div className="absolute inset-0 h-full w-full bg-black/80"></div>
@@ -87,22 +88,24 @@ const ROI = () => {
                 </p>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-15 mt-10  md:w-5xl md:mx-auto mx-5">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-15 mt-10 md:mx-10 mx-5">
                     {roiStats.map((_, index) => (
                         <div
                             key={index}
-                            className="border-l border-brand-dark-lime py- pr-1 pl-3 shadow-sm hover:shadow-md transition-all duration-300"
+                            className="border-l border-brand-dark-lime py- pr-1 pl-3 flex flex-col gap-6"
                         >
                             <h3 className="font-inter text-3xl md:text-4xl font-bold text-brand-lime mb-2">
                                 {roi && roi[`card_value_${index + 1}`]}
                             </h3>
 
-                            <p className="font-spaceGrotesk text-brand-light-lime text-sm md:text-xl mb-2">
-                                {roi && roi[`card_title_${index + 1}`]}
-                            </p>
-                            <p className="font-inter text-brand-light-lime/80 text-sm">
-                                {roi && roi[`card_desc_${index + 1}`]}
-                            </p>
+                            <div>
+                                <p className="font-spaceGrotesk text-brand-light-lime text-sm md:text-xl mb-2">
+                                    {roi && roi[`card_title_${index + 1}`]}
+                                </p>
+                                <p className="font-inter text-brand-light-lime/80 text-sm">
+                                    {roi && roi[`card_desc_${index + 1}`]}
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>
