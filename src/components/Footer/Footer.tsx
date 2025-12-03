@@ -9,7 +9,7 @@ const Footer = () => {
                 <img
                     src="/solarcare-logo.svg"
                     alt=""
-                    className="absolute left-1/2 top-1/2 -translate-1/2 -translate-y-[49%]  w-120 h-120 opacity-50"
+                    className="absolute left-1/2 top-1/2 -translate-1/2 -translate-y-[44%]  w-120 h-120 opacity-50"
                 />
             </div>
 
