@@ -1,5 +1,6 @@
 // import HeroCarousel from "./components/Carousel";
 import Footer from "./components/Footer/Footer";
+// import BeforeAfterSlider from "./components/ImageSlider";
 // import Navbar from "./components/MobileNav";
 import Navbar from "./components/Navbar/Navbar";
 // import HeroCarousel from "./components/NewCarousel";

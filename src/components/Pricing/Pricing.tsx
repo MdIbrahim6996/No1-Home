@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 import { useRef, useState } from "react";
 import { GiMoebiusTriangle, GiCheckeredDiamond } from "react-icons/gi";
 import { IoMdCube } from "react-icons/io";
+import { openGmail } from "../../utils/constants";
 
 const plans = [
     {
@@ -109,7 +110,10 @@ const Pricing = () => {
         );
     });
     return (
-        <section id="pricing" className="pricing max-w-7xl mx-auto px-2 md:px-12 py-20 my-20">
+        <section
+            id="pricing"
+            className="pricing max-w-7xl mx-auto px-2 md:px-12 py-20 my-20"
+        >
             <div className="md:flex gap-2 items-start mb-24">
                 <h2
                     ref={textRef}
@@ -143,8 +147,8 @@ const Pricing = () => {
                 </p>
             </div> */}
 
-            <div className="flex items-center gap-3 w-fit mx-auto my-10 md:text-3xl text-xl font-spaceGrotesk">
-                <span>Billing Done</span>
+            <div className="flex items-center gap-3 w-fit mx-auto my-10 md:text-3xl text-xl font-mon">
+                <span>Yearly</span>
 
                 <button
                     onClick={() => setIsMonthly(!isMonthly)}
@@ -159,7 +163,8 @@ const Pricing = () => {
                     />
                 </button>
 
-                <span className="w-20">{isMonthly ? "Monthly" : "Yearly"}</span>
+                {/* <span className="w-20">{isMonthly ? "Monthly" : "Yearly"}</span> */}
+                <span>Monthly</span>
             </div>
 
             {/* Pricing Grid */}
@@ -210,7 +215,9 @@ const Pricing = () => {
                         </h2>
 
                         {/* Button */}
+
                         <button
+                            onClick={() => openGmail()}
                             className={`btn relative overflow-hidden w-full py-3 cursor-pointer rounded-md font-spaceGrotesk font-semibold mb-8 transition-all ${
                                 plan.highlight
                                     ? "bg-brand-light-lime text-brand-deep-navy hover:bg-brand-lime"

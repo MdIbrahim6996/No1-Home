@@ -23,27 +23,26 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
     };
 
     return (
-        <main className=" relative grid place-items-center">
-            <p
+        <main className="relative grid place-items-center">
+            {/* <p
                 className="absolute top-0 left-0 z-100 p-0.5 px-6 m-2 bg-emerald-900 rounded-full text-brand-light-lime
              font-semibold font-spaceGrotesk"
             >
                 Before
-            </p>
-            <p
+            </p> */}
+            {/* <p
                 className="absolute top-0 right-0 z-100 p-0.5 px-6 m-2 bg-emerald-900 rounded-full text-brand-light-lime
              font-semibold font-spaceGrotesk"
             >
                 After
-            </p>
-           
+            </p> */}
 
             <div
                 ref={containerRef}
                 className="relative overflow-hidden rounded-lg"
                 style={{ "--position": "50%" } as React.CSSProperties}
             >
-                <div className="w-full h-[510px] aspect-square">
+                <div className="relative w-full h-[510px] aspect-square">
                     {/* BEFORE Image */}
                     <img
                         src={beforeSrc}
@@ -53,6 +52,12 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
                             width: "var(--position)",
                         }}
                     />
+                    <p
+                        className="absolute top-0 left-15 --z-1 p-0.5 px-6 m-2 bg-emerald-900 rounded-full text-brand-light-lime
+             font-semibold font-spaceGrotesk"
+                    >
+                        Before
+                    </p>
 
                     {/* AFTER Image */}
                     <img
@@ -60,6 +65,12 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
                         alt={altAfter}
                         className="w-full h-full object-cover object-left"
                     />
+                    <p
+                        className="absolute top-0 right-15 --z-1 p-0.5 px-6 m-2 bg-emerald-900 rounded-full text-brand-light-lime
+             font-semibold font-spaceGrotesk"
+                    >
+                        After
+                    </p>
                 </div>
 
                 {/* Slider Input */}
@@ -69,7 +80,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
                     max={100}
                     defaultValue={50}
                     aria-label="Percentage of before photo shown"
-                    className="absolute inset-0 w-full h-full cursor-pointer opacity-0"
+                    className="absolute z-10 inset-0 w-full h-full cursor-pointer opacity-0"
                     onChange={handleSliderChange}
                 />
 

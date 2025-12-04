@@ -42,6 +42,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .scrollbar-hide {
     scrollbar-width: none;
 }
+.polygon {
+    clip-path: polygon(100% 0, 100% 85%, 10% 85%, 0 100%, 0 0);
+}
 
 @theme {
     --font-montserrat: "Montserrat", sans-serif;

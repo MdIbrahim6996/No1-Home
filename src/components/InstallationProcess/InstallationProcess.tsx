@@ -118,9 +118,11 @@ const InstallationProcess = () => {
             ".install-grid .card",
             {
                 y: "100%",
+                opacity: 0,
             },
             {
                 y: "0%",
+                opacity: 1,
                 stagger: 0.2,
                 duration: 0.5,
                 delay: 0.5,

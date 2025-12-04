@@ -45,9 +45,9 @@ const FAQs = () => {
         >
             {/* Section Header */}
             <div className="text-center">
-                <p className="font-inter text-brand-slate text-sm mb-2 uppercase tracking-wide">
+                {/* <p className="font-inter text-brand-slate text-sm mb-2 uppercase tracking-wide">
                     Trusted By
-                </p>
+                </p> */}
                 <h2 className="font-raleway md:text-5xl text-3xl font-semibold text-brand-deep-navy mb-12 leading-tight">
                     Any Questions. We Got You.
                 </h2>
@@ -86,11 +86,17 @@ const FAQs = () => {
 
                                 {/* Answer */}
                                 <div
-                                    className={`px-6 overflow-hidden transition-all duration-300 ${
+                                    className={` flex gap-5 ${
+                                        index % 2 === 0
+                                            ? "flex-row-reverse"
+                                            : ""
+                                    } pointer-events-none w-full px-6 overflow-hidden transition-all duration-300 ${
                                         isOpen ? "max-h-96 mt-3" : "max-h-0"
                                     }`}
                                 >
-                                    <p className="font-inter text-brand-navy/80 text-sm md:text-base leading-5">
+                                    <div className="w-1/2 pointer-events-none rounded-md h-50 bg-brand-lime overflow-hidden">
+                                    <img src="/hero-new.jpg" className="h-full w-full object-cover" alt="" /></div>
+                                    <p className="w-1/2 font-inter text-brand-navy/80 text-sm md:text-base leading-5">
                                         {faqsSheet &&
                                             faqsSheet[`faq_ans_${index + 1}`]}
                                     </p>

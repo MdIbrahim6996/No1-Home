@@ -4,6 +4,8 @@ import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef, useState } from "react";
 import { useAutoFetch } from "../../hooks/useAutoFetch";
 import Calculator from "../Calculator/Calculator";
+import useCity from "../../hooks/useCity";
+import { scrollToSection } from "../../utils/constants";
 
 gsap.registerPlugin(SplitText);
 
@@ -40,7 +42,7 @@ const Hero = () => {
     const subtitleRef = useRef(null);
 
     const hero = useAutoFetch<any>("/Hero");
-
+    const city = useCity() || "Your City";
     useGSAP(
         () => {
             if (!titleRef.current || !subtitleRef.current) return;
@@ -111,14 +113,14 @@ const Hero = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % slides.length);
-        }, 3000);
+        }, 8000);
 
         return () => clearInterval(interval);
     }, [index]);
     return (
         <section
             id="home"
-            className="relative overflow-hidden h-screen flex flex-col justify-end md:m-1.5 px-4 md:px-10 pb-20 md:rounded-lg"
+            className="relative overflow-hidden h-screen flex flex-col justify-end md:m-1.5 px-4 md:px-10 md:pb-10 pb-20 md:rounded-lg"
         >
             <picture className="h-screen w-full overflow-hidden absolute inset-0">
                 {/* <source srcSet="/hero-mobile.webp" media="(max-width: 768px)" /> */}
@@ -146,9 +148,11 @@ const Hero = () => {
             <div className="relative md:max-w-3xl">
                 <h1
                     ref={titleRef}
-                    className="will-change-transform will-change-opacity font-raleway md:text-7xl text-5xl font-semibold text-brand-light-bg md:leading-18 leading-12"
+                    className="will-change-transform will-change-opacity font-raleway md:text-6xl text-4xl 
+                    font-semibold text-brand-light-bg md:leading-18 leading-12"
                 >
-                    {hero && hero[`title_${index + 1}`]}
+                    {hero &&
+                        hero[`title_${index + 1}`].replace("insert_city", city)}
                 </h1>
                 {/* 
                 <p
@@ -159,10 +163,29 @@ const Hero = () => {
                 </p> */}
                 <p
                     ref={subtitleRef}
-                    className="will-change-transform will-change-opacity mt-4 max-w-lg font-inter text-brand-lime text-base md:text-lg md:leading-5.5 leading-4.5"
+                    className="will-change-transform text-justify will-change-opacity mt-4 max-w-lg font-inter text-brand-lime text-base md:text-lg md:leading-5.5 leading-4.5"
                 >
-                    {hero && hero[`subtitle_${index + 1}`]}
+                    {hero &&
+                        hero[`subtitle_${index + 1}`].replace(
+                            "insert_city",
+                            city
+                        )}
                 </p>
+
+                <div className="md:mt-15 mt-6 flex gap-2 items-center">
+                    <button
+                        onClick={() => scrollToSection("contact")}
+                        className="gap-2 border cursor-pointer border-brand-lime bg-brand-lime text-sm font-medium text-brand-midnight font-spaceGrotesk px-5 py-2 rounded-md"
+                    >
+                        Book Free Assessment
+                    </button>
+                    <button
+                        onClick={() => scrollToSection("pricing")}
+                        className="gap-2 border cursor-pointer border-brand-lime text-sm font-medium text-brand-lime font-spaceGrotesk px-5 py-2 rounded-md"
+                    >
+                        See Plans
+                    </button>
+                </div>
             </div>
 
             <div className="absolute md:hidden -right-18 top-40 rotate-90 gap-2 w-fit">
@@ -200,7 +223,7 @@ const Hero = () => {
                     </div>
                 ))}
             </div> */}
-            <div className="absolute grid md:hidden right-5 bottom-5 grid-cols-3 gap-0.5 w-fit ">
+            {/* <div className="absolute grid md:hidden right-5 bottom-5 grid-cols-3 gap-0.5 w-fit ">
                 {slides.map((slide, i) => (
                     <div
                         className={`h-10 w-10 rounded-md overflow-hidden ${
@@ -215,7 +238,7 @@ const Hero = () => {
                         />
                     </div>
                 ))}
-            </div>
+            </div> */}
         </section>
     );
 };

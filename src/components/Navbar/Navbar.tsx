@@ -3,6 +3,7 @@ import gsap from "gsap";
 // import { ArrowUpRight } from "lucide-react";
 import { useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import { scrollToSection } from "../../utils/constants";
 
 const mobileLinks = [
     "Home",
@@ -60,12 +61,6 @@ const Navbar = () => {
         }
     }, [open]);
 
-    const scrollToSection = (id: string) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-        }
-    };
     return (
         <>
             <nav className="fixed md:hidde w-screen h-16 z-100 top-0 overflow-hidden">
@@ -73,7 +68,10 @@ const Navbar = () => {
                     className="flex items-center justify-between md:px-4 px-2 bg-brand-charcoal/15 backdrop-blur-sm
              text-brand-light-bg m-2 mx-2 md:mr-5 rounded-md py-2"
                 >
-                    <div className="w-16 md:w-40 md:h-10">
+                    <div
+                        onClick={() => scrollToSection("home")}
+                        className="w-16 md:w-40 md:h-10"
+                    >
                         {/* <img
                         src="/logo.png"
                         className="w-full h-full object-cover"
@@ -102,7 +100,7 @@ const Navbar = () => {
 
                         <span
                             className="cursor-pointer"
-                            onClick={() => scrollToSection("services")}
+                            onClick={() => scrollToSection("installation")}
                         >
                             Services
                         </span>
@@ -122,11 +120,14 @@ const Navbar = () => {
                         </span>
                     </div>
 
-                    <div className="hidden md:flex items-center h-full">
-                        <button className="gap-2 bg-brand-lime text-sm font-medium text-brand-midnight font-spaceGrotesk px-5 py-2 rounded-md">
+                    <div
+                        onClick={() => scrollToSection("contact")}
+                        className="hidden md:flex items-center h-full"
+                    >
+                        <button className="gap-2 cursor-pointer bg-brand-lime text-sm font-medium text-brand-midnight font-spaceGrotesk px-5 py-2 rounded-md">
                             Get A Free Quote
                         </button>
-                        <button className=" bg-brand-lime text-brand-midnight h-full px-5 py-2 rounded-md">
+                        <button className=" bg-brand-lime cursor-pointer text-brand-midnight h-full px-5 py-2 rounded-md">
                             <ArrowUpRight size={20} />
                         </button>
                     </div>

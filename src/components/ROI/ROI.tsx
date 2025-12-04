@@ -1,8 +1,9 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useAutoFetch } from "../../hooks/useAutoFetch";
+import Calculator from "../Calculator/Calculator";
 
 const roiStats = [
     {
@@ -36,6 +37,7 @@ const roiStats = [
 ];
 const ROI = () => {
     const roi = useAutoFetch<any>("/ReturnOnInvestment");
+    const [calcOpen, setCalcOpen] = useState(false);
 
     const textRef = useRef(null);
 
@@ -63,7 +65,7 @@ const ROI = () => {
             }
         );
     });
-
+    console.log(calcOpen);
     return (
         <section
             id="roi"
@@ -72,6 +74,12 @@ const ROI = () => {
         >
             {/* Accent Marker */}
             <div className="absolute inset-0 h-full w-full bg-black/80"></div>
+
+            {calcOpen && (
+                <div className="absolute top-10 right-[1%] z-1">
+                    <Calculator handleClose={() => setCalcOpen(false)} />
+                </div>
+            )}
             {/* <img src="/returnOn.jpg" className="h-full w-full bg-cover absolute " alt="" /> */}
             <div className="relative">
                 <div className="border w-fit px-10 py-1 border-brand-light-lime text-brand-light-lime rounded-full mx-auto mb-8">
@@ -79,13 +87,50 @@ const ROI = () => {
                 </div>
 
                 {/* Description */}
-                <p
+                <div
+                    // ref={textRef}
+                    className="font-raleway text-cente text-base md:text-2xl text-brand-light-lime w-[60rem] 
+             mx-auto mb-12"
+                >
+                    <p className="block font-semibold mb-2">
+                        Small Maintenance. Big Returns. Unlock the Full Value of
+                        Your Solar Investment.
+                    </p>
+                    <p className="text-lg leading-6 text-justify ">
+                        Solar maintenance isn’t an expense, it’s a self-funding
+                        upgrade. Well-maintained solar panels generate more
+                        power, run longer and require fewer repairs. The money
+                        you save on improved output alone can fully cover the
+                        cost of your plan. Many homeowners see measurable gains
+                        after the very first maintenance visit.{" "}
+                        <span
+                            onClick={() => setCalcOpen(!calcOpen)}
+                            className="bg-brand-lime rounded-md mx-2 px-5 py-0.5 text-brand-deep-navy cursor-pointer"
+                        >
+                            Calculate Here
+                        </span>{" "} <br /> <br />
+                        With No1 Solar Care’s professional cleaning, diagnostics
+                        and performance optimisation, your system can recover
+                        10%–30% lost energy caused by dirt, shading, loose
+                        wiring or inverter inefficiency. Over a year, that
+                        additional energy output often exceeds the cost of both
+                        monthly and annual plans, turning maintenance into a
+                        profit-positive decision. Beyond day-to-day savings,
+                        properly maintained systems last longer, avoid expensive
+                        breakdowns, and maintain high efficiency throughout
+                        their lifespan. That means more power, fewer issues, and
+                        a higher long-term return, making routine maintenance
+                        one of the smartest ways to maximise the value of your
+                        solar investment.
+                    </p>
+                </div>
+                {/* <p
                     ref={textRef}
                     className="font-raleway text-center text-lg md:text-2xl text-brand-light-lime max-w-5xl 
              mx-auto md:leading-7 leading-6 mb-12"
                 >
                     {roi?.main_text}
-                </p>
+                </p> */}
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-15 mt-10 md:mx-10 mx-5">

@@ -5,6 +5,7 @@ import { SplitText } from "gsap/SplitText";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import { useAutoFetch } from "../../hooks/useAutoFetch";
+import { scrollToSection } from "../../utils/constants";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -37,7 +38,7 @@ const AboutSection = () => {
     return (
         <section
             id="about"
-            className="about md:px-[5%] px-2 md:py-40 py-20 flex flex-col md:flex-row gap-10 items-center"
+            className="about md:px-[5%] px-2 md:py-40 py-20 flex flex-col md:flex-row gap-20 items-center"
         >
             {/* LEFT CONTENT */}
             <div className="md:w-[50%]">
@@ -85,16 +86,28 @@ const AboutSection = () => {
                 </h2> */}
                 <h2
                     // ref={textRef}
-                    className="font-raleway tracking-tight text-4xl text-brand-midnight leading-10 mt-6 md:mb-40 mb-20"
+                    className="font-raleway tracking-tigh text-4xl text-brand-midnight leading-10 mt-6 md:mb-18 mb-20"
                 >
-                    {about?.title}
+                    {/* {about?.title} */}
+                    <p className="font-medium mb-10">
+                        {about?.title}
+                    </p>
+                    <p className="text-lg leading-5 mb-3 text-justify">
+                        {about?.para_1}
+                    </p>
+                    <p className="text-lg leading-5 text-justify">
+                        {about?.para_2}
+                    </p>
                 </h2>
 
-                <div className="flex items-center h-full text-brand-deep-navy">
-                    <button className="gap-2 bg-brand-lime font-medium font-spaceGrotesk px-5 py-2 rounded-md hover:bg-[--color-brand-midnight] transition-colors">
+                <div
+                    onClick={() => scrollToSection("contact")}
+                    className="flex items-center h-full text-brand-deep-navy"
+                >
+                    <button className="gap-2 cursor-pointer bg-brand-lime font-medium font-spaceGrotesk px-5 py-2 rounded-md hover:bg-[--color-brand-midnight] transition-colors">
                         Get A Free Quote
                     </button>
-                    <button className="bg-brand-lime h-full px-5 py-2 rounded-md">
+                    <button className="bg-brand-lime cursor-pointer h-full px-5 py-2 rounded-md">
                         <ArrowUpRight size={23} />
                     </button>
                 </div>

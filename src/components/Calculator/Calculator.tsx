@@ -27,8 +27,8 @@ export default function Calculator({
 
     return (
         <div
-            className="scrollbar-hide relative md:w-132 max-w-screen border md:h-120 h-screen
-         overflow-y-scroll bg-brand-charcoal/20 backdrop-blur-md border-black/10 rounded-md p-6 shadow-xl font-spaceGrotesk"
+            className="scrollbar-hide relative md:w-75 max-w-screen border md:h-[85vh] h-screen
+         overflow-y-scroll bg-brand-charcoal/20 backdrop-blur-md border-black/10 rounded-md p-3 shadow-xl font-spaceGrotesk"
         >
             <button
                 onClick={handleClose}
@@ -40,7 +40,7 @@ export default function Calculator({
                 How much could maintenance save you each year?
             </h2>
 
-            <p className="text-gray-60 mb-4 text-sm text-brand-light-bg">
+            <p className="text-gray-60 mb-4 text-xs text-brand-light-bg">
                 We use UK norms: 850 kWh/kW/yr baseline, +20% boost from
                 maintenance, and £0.30/kWh.
             </p>
@@ -106,7 +106,13 @@ export default function Calculator({
 
             {/* Stats */}
             <div className="flex flex-col justify-between  mt-4">
-                <div className="grid grid-cols-3 gap-3 text-brand-light-bg">
+                <div className="grid grid-cols-2 gap-1 text-brand-light-bg">
+                    <div className="border text-center col-span-2 border-brand-light-lime/20 rounded-lg p-1.5">
+                        <div className="text-lg font-semibold capitalize">saving per year</div>
+                        <div className="font-extrabold text-2xl text-brand-lime">
+                            {cf.format(saving)}
+                        </div>
+                    </div>
                     <div className="border border-brand-light-lime/20 rounded-lg p-3">
                         <div className="text-sm leading-4">
                             Baseline production
@@ -122,17 +128,10 @@ export default function Calculator({
                             +{nf.format(extra)} kWh/yr
                         </div>
                     </div>
-
-                    <div className="border border-brand-light-lime/20 rounded-lg p-3">
-                        <div className="text-sm">£ saving per year</div>
-                        <div className="font-extrabold text-lg text-brand-lime">
-                            {cf.format(saving)}
-                        </div>
-                    </div>
                 </div>
 
                 <button
-                    className="w-full bg-brand-navy text-brand-light-bg font-bold py-3 rounded-lg mt-13"
+                    className="w-full bg-brand-navy text-brand-light-bg font-bold py-3 rounded-lg mt-3"
                     onClick={() => (window.location.href = "#contact")}
                 >
                     Get my free solar health check

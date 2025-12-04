@@ -4,7 +4,7 @@ import { PiPlant } from "react-icons/pi";
 
 import type { IconType } from "react-icons";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 import BeforeAfterSlider from "../ImageSlider";
@@ -71,10 +71,25 @@ const BenefitCard = ({
 //     },
 // ];
 const Benefits = () => {
+    const imagePairs = [
+        { before: "/before-1.png", after: "/after-1.png" },
+        { before: "/before-2.png", after: "/after-2.png" },
+        { before: "/before-3.png", after: "/after-3.png" },
+    ];
     const textRef = useRef(null);
     const subtextRef = useRef(null);
 
     const benefits = useAutoFetch<any>("/Benefit");
+
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % imagePairs.length);
+        }, 5000); // 5 seconds
+
+        return () => clearInterval(interval);
+    }, []);
 
     useGSAP(async () => {
         // Wait until all custom fonts are loaded
@@ -192,9 +207,14 @@ const Benefits = () => {
                     />
                 </div>
                 <div className="h-full w-full rounded-xl overflow-hidden">
-                    <BeforeAfterSlider
+                    {/* <BeforeAfterSlider
                         beforeSrc="/before-3.png"
                         afterSrc="/after-3.png"
+                    /> */}
+
+                    <BeforeAfterSlider
+                        beforeSrc={imagePairs[index].before}
+                        afterSrc={imagePairs[index].after}
                     />
                 </div>
                 <div className="flex flex-col gap-2">
