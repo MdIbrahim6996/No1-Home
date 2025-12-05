@@ -46,6 +46,12 @@ input[type="number"]::-webkit-outer-spin-button {
     clip-path: polygon(100% 0, 100% 85%, 10% 85%, 0 100%, 0 0);
 }
 
+.thin-cleaning-icon svg {
+    stroke: currentColor;
+    fill: none; /* removes thick fill */
+    stroke-width: 1; /* make it thinner */
+}
+
 @theme {
     --font-montserrat: "Montserrat", sans-serif;
     --font-spaceGrotesk: "Space Grotesk", sans-serif;
